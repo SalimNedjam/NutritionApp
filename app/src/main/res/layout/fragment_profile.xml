@@ -691,7 +691,7 @@
                     android:layout_marginBottom="30dp"
                     android:gravity="center">
 
-                    <com.example.nedjamarabi.pfe.Utils.MaterialNumberPicker
+                    <com.deepside.nutritionapp.Utils.MaterialNumberPicker
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -703,7 +703,7 @@
                         app:npTextColor="@color/colorPrimary"
                         app:npTextSize="25sp" />
 
-                    <com.example.nedjamarabi.pfe.Utils.MaterialNumberPicker
+                    <com.deepside.nutritionapp.Utils.MaterialNumberPicker
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -749,7 +749,7 @@
                     android:layout_marginBottom="40dp"
                     android:gravity="center">
 
-                    <com.example.nedjamarabi.pfe.Utils.MaterialNumberPicker
+                    <com.deepside.nutritionapp.Utils.MaterialNumberPicker
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -761,7 +761,7 @@
                         app:npTextColor="@color/colorPrimary"
                         app:npTextSize="25sp" />
 
-                    <com.example.nedjamarabi.pfe.Utils.MaterialNumberPicker
+                    <com.deepside.nutritionapp.Utils.MaterialNumberPicker
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -773,7 +773,7 @@
                         app:npTextColor="@color/colorPrimary"
                         app:npTextSize="25sp" />
 
-                    <com.example.nedjamarabi.pfe.Utils.MaterialNumberPicker
+                    <com.deepside.nutritionapp.Utils.MaterialNumberPicker
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
