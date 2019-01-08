@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/progress">
+        <shape
+            android:innerRadius="@dimen/circleProgressRadiusExtern"
+            android:shape="ring"
+            android:thickness="@dimen/circleProgressThicknessExtern"
+            android:useLevel="true">
+            <corners
+                android:bottomLeftRadius="2dp"
+                android:bottomRightRadius="2dp"
+                android:topLeftRadius="2dp"
+                android:topRightRadius="2dp" />
+
+            <gradient
+                android:endColor="@color/circleProgressCompleteEndGradient"
+                android:startColor="@color/circleProgressCompleteStartGradient"
+                android:type="sweep" />
+
+        </shape>
+    </item>
+</layer-list>

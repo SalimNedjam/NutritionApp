@@ -1,0 +1,1416 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:food="http://data.lirmm.fr/ontologies/food#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:void="http://rdfs.org/ns/void#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+
+    <void:Dataset rdf:about="http://fr.openfoodfacts.org">
+        <void:dataDump rdf:resource="http://fr.openfoodfacts.org/data/fr.openfoodfacts.org.products.rdf"/>
+        <void:vocabulary rdf:resource="http://data.lirmm.fr/ontologies/food"/>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2012-05-21</dcterms:created>
+        <dcterms:creator>Open Food Facts</dcterms:creator>
+        <dcterms:description xml:lang="en">Data on food products from the world (includes ingredients, nutrition facts, brands, labels etc.) from http://fr.openfoodfacts.org</dcterms:description>
+        <dcterms:description xml:lang="fr">DonnÃ©es sur les produits alimentaires du monde entier (ingrÃ©dients, composition nutritionnelle, marques, labels etc.)</dcterms:description>
+        <dcterms:license rdf:resource="https://opendatacommons.org/licenses/odbl/"/>
+        <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-03-22</dcterms:modified>
+        <dcterms:subject rdf:resource="http://dbpedia.org/resource/Food"/>
+        <dcterms:subject rdf:resource="http://dbpedia.org/resource/Nutrition"/>
+        <dcterms:subject rdf:resource="http://dbpedia.org/resource/Nutrition_facts_label"/>
+        <dcterms:subject rdf:resource="http://dbpedia.org/resource/Food_energy"/>
+        <dcterms:title>Open Food Facts (fr)</dcterms:title>
+        <foaf:homepage rdf:resource="http://fr.openfoodfacts.org"/>
+    </void:Dataset>
+
+    <!--
+    This is a RDF export of the http://fr.openfoodfacts.org food products database.
+    The database is available under Open Database Licence 1.0 (ODbL) https://opendatacommons.org/licenses/odbl/1.0/
+    -->
+
+    <rdf:Description rdf:about="http://world-fr.openfoodfacts.org/produit/10/madeleines-nature-bijou" rdf:type="http://data.lirmm.fr/ontologies/food#FoodProduct">
+        <food:code>10</food:code>
+        <food:name>Madeleines nature</food:name>
+        <food:IngredientListAsText>Farine de _blÃ©_, huile de colza, sucre, _oeufs_ frais 18%, sirop de glucose-fructose, stabilisant : glycÃ©rol, poudres Ã  lever : carbonates d'ammonium, carbonates de sodium, diphosphates (_blÃ©_), sel, Ã©mulsifiants : mono et diglycÃ©rides d'acides gras, _lait_ Ã©crÃ©mÃ© en poudre, arÃ´me.</food:IngredientListAsText>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/farine-de-ble" />
+                <food:rank>1</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/huile-de-colza" />
+                <food:rank>2</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sucre" />
+                <food:rank>3</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/oeufs-frais" />
+                <food:rank>4</food:rank>
+                <food:percent>18</food:percent>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sirop-de-glucose-fructose" />
+                <food:rank>5</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/stabilisant" />
+                <food:rank>6</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/glycerol" />
+                <food:rank>7</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/poudres-a-lever" />
+                <food:rank>8</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/carbonates-d-ammonium" />
+                <food:rank>9</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/carbonates-de-sodium" />
+                <food:rank>10</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/diphosphates" />
+                <food:rank>11</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/ble" />
+                <food:rank>12</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sel" />
+                <food:rank>13</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/emulsifiants" />
+                <food:rank>14</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/mono-et-diglycerides-d-acides-gras" />
+                <food:rank>15</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/lait-ecreme-en-poudre" />
+                <food:rank>16</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/arome" />
+                <food:rank>17</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:carbohydratesPer100g>55</food:carbohydratesPer100g>
+        <food:saturatedFatPer100g>2.5</food:saturatedFatPer100g>
+        <food:energyPer100g>1900</food:energyPer100g>
+        <food:nutritionScoreUkPer100g>12</food:nutritionScoreUkPer100g>
+        <food:sugarsPer100g>26</food:sugarsPer100g>
+        <food:fiberPer100g>1.5</food:fiberPer100g>
+        <food:saltPer100g>0.66</food:saltPer100g>
+        <food:fatPer100g>23</food:fatPer100g>
+        <food:nutritionScoreFrPer100g>12</food:nutritionScoreFrPer100g>
+        <food:sodiumPer100g>0.259842519685039</food:sodiumPer100g>
+        <food:proteinsPer100g>6</food:proteinsPer100g>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://world-fr.openfoodfacts.org/produit/11" rdf:type="http://data.lirmm.fr/ontologies/food#FoodProduct">
+        <food:code>11</food:code>
+        <food:name></food:name>
+        <food:IngredientListAsText></food:IngredientListAsText>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://world-fr.openfoodfacts.org/produit/24/100-soja-protein-vanille-allfitnessfactory-de" rdf:type="http://data.lirmm.fr/ontologies/food#FoodProduct">
+        <food:code>24</food:code>
+        <food:name>100% Soja Protein Vanille</food:name>
+        <food:IngredientListAsText>100% Soja-Protein-Isolat (_Soja_), Aroma, SÃ¼Ãstoff Natrium-Saccharin.</food:IngredientListAsText>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/soja-protein-isolat" />
+                <food:rank>1</food:rank>
+                <food:percent>100</food:percent>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/soja" />
+                <food:rank>2</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/aroma" />
+                <food:rank>3</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sussstoff-natrium-saccharin" />
+                <food:rank>4</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:carbohydratesPer100g>1.1</food:carbohydratesPer100g>
+        <food:energyPer100g>1590</food:energyPer100g>
+        <food:fatPer100g>0.5</food:fatPer100g>
+        <food:proteinsPer100g>88.5</food:proteinsPer100g>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://world-fr.openfoodfacts.org/produit/30/cakes-raisins-bijou" rdf:type="http://data.lirmm.fr/ontologies/food#FoodProduct">
+        <food:code>30</food:code>
+        <food:name>Cakes Raisins</food:name>
+        <food:IngredientListAsText>Farine de _blÃ©_, _Åufs_ frais, huile de colza, sucre, raisins secs 13% (raisins, huile de colza, dextrose), sirop de glucose-fructose, stabilisant : glycÃ©rol, poudres Ã  lever : carbonates dâammonium - carbonates de sodium - diphosphates (_blÃ©_), sel, _lait_ Ã©crÃ©mÃ© en poudre, Ã©mulsifiants : mono et diglycÃ©rides dâacides gras, arÃ´me naturel d'orange.</food:IngredientListAsText>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/farine-de-ble" />
+                <food:rank>1</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/oeufs-frais" />
+                <food:rank>2</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/huile-de-colza" />
+                <food:rank>3</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sucre" />
+                <food:rank>4</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/raisins-secs" />
+                <food:rank>5</food:rank>
+                <food:percent>13</food:percent>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sirop-de-glucose-fructose" />
+                <food:rank>6</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/stabilisant" />
+                <food:rank>7</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/glycerol" />
+                <food:rank>8</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/poudres-a-lever" />
+                <food:rank>9</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/carbonates-d-ammonium" />
+                <food:rank>10</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/carbonates-de-sodium" />
+                <food:rank>11</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/diphosphates" />
+                <food:rank>12</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/ble" />
+                <food:rank>13</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sel" />
+                <food:rank>14</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/lait-ecreme-en-poudre" />
+                <food:rank>15</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/emulsifiants" />
+                <food:rank>16</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/mono-et-diglycerides-d-acides-gras" />
+                <food:rank>17</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/arome-naturel-d-orange" />
+                <food:rank>18</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/raisins" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/huile-de-colza" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/dextrose" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:carbohydratesPer100g>56</food:carbohydratesPer100g>
+        <food:saturatedFatPer100g>2.5</food:saturatedFatPer100g>
+        <food:energyPer100g>1768</food:energyPer100g>
+        <food:nutritionScoreUkPer100g>13</food:nutritionScoreUkPer100g>
+        <food:sugarsPer100g>28</food:sugarsPer100g>
+        <food:fiberPer100g>1.8</food:fiberPer100g>
+        <food:saltPer100g>0.65</food:saltPer100g>
+        <food:fatPer100g>19</food:fatPer100g>
+        <food:nutritionScoreFrPer100g>13</food:nutritionScoreFrPer100g>
+        <food:sodiumPer100g>0.255905511811024</food:sodiumPer100g>
+        <food:proteinsPer100g>5.8</food:proteinsPer100g>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://world-fr.openfoodfacts.org/produit/31/cakes-aux-fruits-bijou" rdf:type="http://data.lirmm.fr/ontologies/food#FoodProduct">
+        <food:code>31</food:code>
+        <food:name>Cakes aux Fruits</food:name>
+        <food:IngredientListAsText>Fruits 37.4% [fruits confits 21,5% [fruits (pastÃ¨que, bigarreaux, Ã©corce dâorange), sirop de glucose-fructose, sucre, conservateurs : sorbate de potassium - anhydride sulfureux, colorants : caramel ordinaire - E120, E133, correcteur dâaciditÃ© : acide citrique], raisins secs au rhum 15.9%, farine de blÃ©, huile de colza, Åufs frais, sucre, sirop de glucose-fructose, stabilisant : glycÃ©rol, poudres Ã  lever : carbonates dâammonium - carbonates de sodium - diphosphates (blÃ©), sel, Ã©mulsifiants : mono et diglycÃ©rides dâacides gras, lait Ã©crÃ©mÃ© en poudre, arÃ´me naturel dâorange.</food:IngredientListAsText>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/fruits" />
+                <food:rank>1</food:rank>
+                <food:percent>37.4</food:percent>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/raisins-secs-au-rhum" />
+                <food:rank>2</food:rank>
+                <food:percent>15.9</food:percent>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/farine-de-ble" />
+                <food:rank>3</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/huile-de-colza" />
+                <food:rank>4</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/oeufs-frais" />
+                <food:rank>5</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sucre" />
+                <food:rank>6</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sirop-de-glucose-fructose" />
+                <food:rank>7</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/stabilisant" />
+                <food:rank>8</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/glycerol" />
+                <food:rank>9</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/poudres-a-lever" />
+                <food:rank>10</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/carbonates-d-ammonium" />
+                <food:rank>11</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/carbonates-de-sodium" />
+                <food:rank>12</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/diphosphates" />
+                <food:rank>13</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/ble" />
+                <food:rank>14</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sel" />
+                <food:rank>15</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/emulsifiants" />
+                <food:rank>16</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/mono-et-diglycerides-d-acides-gras" />
+                <food:rank>17</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/lait-ecreme-en-poudre" />
+                <food:rank>18</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/arome-naturel-d-orange" />
+                <food:rank>19</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/fruits-confits-21" />
+                <food:percent>5</food:percent>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/fruits" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/pasteque" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/bigarreaux" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/ecorce-d-orange" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sirop-de-glucose-fructose" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sucre" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/conservateurs" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sorbate-de-potassium" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/anhydride-sulfureux" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/colorants" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/caramel-ordinaire" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/e120" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/e133" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/correcteur-d-acidite" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/acide-citrique" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:carbohydratesPer100g>60</food:carbohydratesPer100g>
+        <food:saturatedFatPer100g>2</food:saturatedFatPer100g>
+        <food:fruitsVegetablesNutsPer100g>37.4</food:fruitsVegetablesNutsPer100g>
+        <food:energyPer100g>1670</food:energyPer100g>
+        <food:nutritionScoreUkPer100g>12</food:nutritionScoreUkPer100g>
+        <food:sugarsPer100g>34</food:sugarsPer100g>
+        <food:fiberPer100g>1.5</food:fiberPer100g>
+        <food:saltPer100g>0.6</food:saltPer100g>
+        <food:fatPer100g>15</food:fatPer100g>
+        <food:nutritionScoreFrPer100g>12</food:nutritionScoreFrPer100g>
+        <food:sodiumPer100g>0.236220472440945</food:sodiumPer100g>
+        <food:proteinsPer100g>4.9</food:proteinsPer100g>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://world-fr.openfoodfacts.org/produit/50/financiers-aux-amandes-bijou" rdf:type="http://data.lirmm.fr/ontologies/food#FoodProduct">
+        <food:code>50</food:code>
+        <food:name>Financiers aux Amandes</food:name>
+        <food:IngredientListAsText>Sucre, blanc dâ_Åufs_ frais, poudre dâ_amande_ 16.5%, _beurre_ pÃ¢tissier, farine de _blÃ©_, _Åufs_ frais, sirop de glucose-fructose, stabilisant : glycÃ©rol, sel, poudres Ã  lever : carbonates de sodium - diphosphates (_blÃ©_), arÃ´me.</food:IngredientListAsText>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sucre" />
+                <food:rank>1</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/blanc-d-oeufs-frais" />
+                <food:rank>2</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/poudre-d-amande" />
+                <food:rank>3</food:rank>
+                <food:percent>16.5</food:percent>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/beurre-patissier" />
+                <food:rank>4</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/farine-de-ble" />
+                <food:rank>5</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/oeufs-frais" />
+                <food:rank>6</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sirop-de-glucose-fructose" />
+                <food:rank>7</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/stabilisant" />
+                <food:rank>8</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/glycerol" />
+                <food:rank>9</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sel" />
+                <food:rank>10</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/poudres-a-lever" />
+                <food:rank>11</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/carbonates-de-sodium" />
+                <food:rank>12</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/diphosphates" />
+                <food:rank>13</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/ble" />
+                <food:rank>14</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/arome" />
+                <food:rank>15</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:carbohydratesPer100g>51</food:carbohydratesPer100g>
+        <food:saturatedFatPer100g>10</food:saturatedFatPer100g>
+        <food:energyPer100g>1868</food:energyPer100g>
+        <food:nutritionScoreUkPer100g>22</food:nutritionScoreUkPer100g>
+        <food:sugarsPer100g>39</food:sugarsPer100g>
+        <food:fiberPer100g>1.7</food:fiberPer100g>
+        <food:saltPer100g>0.55</food:saltPer100g>
+        <food:fatPer100g>23</food:fatPer100g>
+        <food:nutritionScoreFrPer100g>22</food:nutritionScoreFrPer100g>
+        <food:sodiumPer100g>0.216535433070866</food:sodiumPer100g>
+        <food:proteinsPer100g>8</food:proteinsPer100g>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://world-fr.openfoodfacts.org/produit/51/fondants-citron-bijou" rdf:type="http://data.lirmm.fr/ontologies/food#FoodProduct">
+        <food:code>51</food:code>
+        <food:name>Fondants Citron</food:name>
+        <food:IngredientListAsText>Sucre, blanc dâ_Åufs_ frais, poudre dâ_amande_ 16.5%, _beurre_ pÃ¢tissier, farine de _blÃ©_, pÃ©pites au citron 7% (sucre, pomme, pulpe de citron 18.1%*, dextrose, fibres dâananas, gÃ©lifiant : alginate de sodium, correcteurs dâaciditÃ© : acide citrique - citrates de potassium, stabilisant : phosphates de calcium, arÃ´me naturel de citron, colorant : curcumine), _Åufs_ frais, sirop de glucose-fructose, stabilisant : glycÃ©rol, poudre de citron 0.9 % (Ã©quivalent Ã  5% de jus de citron) (jus concentrÃ© de citron, maltodextrine), sel, poudres Ã  lever : carbonates de sodium - diphosphates (_blÃ©_), arÃ´me naturel de citron. *% exprimÃ© sur les pÃ©pites Ã©quivalent Ã  1.2% sur lâensemble du produit.</food:IngredientListAsText>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sucre" />
+                <food:rank>1</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/blanc-d-oeufs-frais" />
+                <food:rank>2</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/poudre-d-amande" />
+                <food:rank>3</food:rank>
+                <food:percent>16.5</food:percent>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/beurre-patissier" />
+                <food:rank>4</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/farine-de-ble" />
+                <food:rank>5</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/pepites-au-citron" />
+                <food:rank>6</food:rank>
+                <food:percent>7</food:percent>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/oeufs-frais" />
+                <food:rank>7</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sirop-de-glucose-fructose" />
+                <food:rank>8</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/stabilisant" />
+                <food:rank>9</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/glycerol" />
+                <food:rank>10</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/poudre-de-citron" />
+                <food:rank>11</food:rank>
+                <food:percent>0.9</food:percent>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/equivalent-a-5-de-jus-de-citron" />
+                <food:rank>12</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sel" />
+                <food:rank>13</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/poudres-a-lever" />
+                <food:rank>14</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/carbonates-de-sodium" />
+                <food:rank>15</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/diphosphates" />
+                <food:rank>16</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/ble" />
+                <food:rank>17</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/arome-naturel-de-citron-exprime-sur-les-pepites-equivalent-a-1-2-sur-l-ensemble-du-produit" />
+                <food:rank>18</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sucre" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/pomme" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/pulpe-de-citron-18-1" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/dextrose" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/fibres-d-ananas" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/gelifiant" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/alginate-de-sodium" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/correcteurs-d-acidite" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/acide-citrique" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/citrates-de-potassium" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/stabilisant" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/phosphates-de-calcium" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/arome-naturel-de-citron" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/colorant" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/curcumine" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/jus-concentre-de-citron" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/maltodextrine" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:carbohydratesPer100g>50</food:carbohydratesPer100g>
+        <food:saturatedFatPer100g>10</food:saturatedFatPer100g>
+        <food:energyPer100g>1896</food:energyPer100g>
+        <food:nutritionScoreUkPer100g>22</food:nutritionScoreUkPer100g>
+        <food:sugarsPer100g>37</food:sugarsPer100g>
+        <food:fiberPer100g>2.5</food:fiberPer100g>
+        <food:saltPer100g>0.78</food:saltPer100g>
+        <food:fatPer100g>24</food:fatPer100g>
+        <food:nutritionScoreFrPer100g>22</food:nutritionScoreFrPer100g>
+        <food:sodiumPer100g>0.307086614173228</food:sodiumPer100g>
+        <food:proteinsPer100g>8.1</food:proteinsPer100g>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://world-fr.openfoodfacts.org/produit/104/30-panach-fruits-bijou" rdf:type="http://data.lirmm.fr/ontologies/food#FoodProduct">
+        <food:code>104</food:code>
+        <food:name>30 Panach' Fruits</food:name>
+        <food:IngredientListAsText>PÃ¢tisseries fourrÃ©es Ã  la pulpe de pÃªche : farine de blÃ©, fourrage pÃªche 20% (sirop de glucose-fructose, purÃ©e de pÃªche 50%*, sucre, gÃ©lifiant : pectines, correcteurs dâaciditÃ© : acide citrique - citrates de sodium, arÃ´mes, conservateur : sorbate de potassium), huile de colza, Åufs frais, sucre, sirop de glucose-fructose, stabilisant : glycÃ©rol, poudres Ã  lever : carbonates dâammonium - carbonates de sodium - diphosphates (blÃ©), sel, lait Ã©crÃ©mÃ© en poudre, Ã©mulsifiants : mono et diglycÃ©rides dâacides gras, arÃ´me. *% exprimÃ© sur le fourrage Ã©quivalent Ã  10% sur lâensemble du produit. PÃ¢tisseries fourrÃ©es Ã  la pulpe d'abricot : farine de blÃ©, fourrage abricot 20% (sirop de glucose-fructose, purÃ©e d'abricot 50%*, sucre, gÃ©lifiant : pectines, correcteurs dâaciditÃ© : acide citrique - citrates de sodium, arÃ´mes, conservateur : sorbate de potassium), huile de colza, Åufs frais, sucre, sirop de glucose-fructose, stabilisant : glycÃ©rol, poudres Ã  lever : carbonates dâammonium - carbonates de sodium - diphosphates (blÃ©), sel, lait Ã©crÃ©mÃ© en poudre, Ã©mulsifiants : mono et diglycÃ©rides dâacides gras, arÃ´me. *% exprimÃ© sur le fourrage Ã©quivalent Ã  10% sur lâensemble du produit. PÃ¢tisseries fourrÃ©es Ã  la pulpe de fruits rouges : farine de blÃ©, fourrage fruits rouges 20% (sirop de glucose-fructose, purÃ©e de fraise 17.8%*, sucre, purÃ©e de framboise concentrÃ©e 5%* (Ã©quivalent Ã  21.2%* de purÃ©e de framboise), purÃ©e de cerise concentrÃ©e 3%* (Ã©quivalent Ã  11%* de purÃ©e de cerise), gÃ©lifiant : pectines, correcteurs dâaciditÃ© : acide citrique - citrates de sodium, arÃ´me, conservateur : sorbate de potassium), huile de colza, Åufs frais, sucre, sirop de glucose-fructose, stabilisant : glycÃ©rol, poudres Ã  lever : carbonates dâammonium - carbonates de sodium - diphosphates (blÃ©), sel, lait Ã©crÃ©mÃ© en poudre, Ã©mulsifiants : mono et diglycÃ©rides dâacides gras, arÃ´me. *soit un Ã©quivalent de 50% de purÃ©e de fruits sur le fourrage Ã©quivalent Ã  10% sur lâensemble du produit.</food:IngredientListAsText>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/patisseries-fourrees-a-la-pulpe-de-peche" />
+                <food:rank>1</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/farine-de-ble" />
+                <food:rank>2</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/fourrage-peche" />
+                <food:rank>3</food:rank>
+                <food:percent>20</food:percent>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/huile-de-colza" />
+                <food:rank>4</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/oeufs-frais" />
+                <food:rank>5</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sucre" />
+                <food:rank>6</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sirop-de-glucose-fructose" />
+                <food:rank>7</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/stabilisant" />
+                <food:rank>8</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/glycerol" />
+                <food:rank>9</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/poudres-a-lever" />
+                <food:rank>10</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/carbonates-d-ammonium" />
+                <food:rank>11</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/carbonates-de-sodium" />
+                <food:rank>12</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/diphosphates" />
+                <food:rank>13</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/ble" />
+                <food:rank>14</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sel" />
+                <food:rank>15</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/lait-ecreme-en-poudre" />
+                <food:rank>16</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/emulsifiants" />
+                <food:rank>17</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/mono-et-diglycerides-d-acides-gras" />
+                <food:rank>18</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/arome-exprime-sur-le-fourrage-equivalent-a-10-sur-l-ensemble-du-produit-patisseries-fourrees-a-la-pulpe-d-abricot" />
+                <food:rank>19</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/farine-de-ble" />
+                <food:rank>20</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/fourrage-abricot" />
+                <food:rank>21</food:rank>
+                <food:percent>20</food:percent>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/huile-de-colza" />
+                <food:rank>22</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/oeufs-frais" />
+                <food:rank>23</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sucre" />
+                <food:rank>24</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sirop-de-glucose-fructose" />
+                <food:rank>25</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/stabilisant" />
+                <food:rank>26</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/glycerol" />
+                <food:rank>27</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/poudres-a-lever" />
+                <food:rank>28</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/carbonates-d-ammonium" />
+                <food:rank>29</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/carbonates-de-sodium" />
+                <food:rank>30</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/diphosphates" />
+                <food:rank>31</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/ble" />
+                <food:rank>32</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sel" />
+                <food:rank>33</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/lait-ecreme-en-poudre" />
+                <food:rank>34</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/emulsifiants" />
+                <food:rank>35</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/mono-et-diglycerides-d-acides-gras" />
+                <food:rank>36</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/arome-exprime-sur-le-fourrage-equivalent-a-10-sur-l-ensemble-du-produit-patisseries-fourrees-a-la-pulpe-de-fruits-rouges" />
+                <food:rank>37</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/farine-de-ble" />
+                <food:rank>38</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/fourrage-fruits-rouges" />
+                <food:rank>39</food:rank>
+                <food:percent>20</food:percent>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/puree-de-cerise-concentree-3" />
+                <food:rank>40</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/equivalent-a-11-de-puree-de-cerise" />
+                <food:rank>41</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/gelifiant" />
+                <food:rank>42</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/pectines" />
+                <food:rank>43</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/correcteurs-d-acidite" />
+                <food:rank>44</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/acide-citrique" />
+                <food:rank>45</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/citrates-de-sodium" />
+                <food:rank>46</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/arome" />
+                <food:rank>47</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/conservateur" />
+                <food:rank>48</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sorbate-de-potassium" />
+                <food:rank>49</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/huile-de-colza" />
+                <food:rank>50</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/oeufs-frais" />
+                <food:rank>51</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sucre" />
+                <food:rank>52</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sirop-de-glucose-fructose" />
+                <food:rank>53</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/stabilisant" />
+                <food:rank>54</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/glycerol" />
+                <food:rank>55</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/poudres-a-lever" />
+                <food:rank>56</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/carbonates-d-ammonium" />
+                <food:rank>57</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/carbonates-de-sodium" />
+                <food:rank>58</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/diphosphates" />
+                <food:rank>59</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/ble" />
+                <food:rank>60</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sel" />
+                <food:rank>61</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/lait-ecreme-en-poudre" />
+                <food:rank>62</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/emulsifiants" />
+                <food:rank>63</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/mono-et-diglycerides-d-acides-gras" />
+                <food:rank>64</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/arome-soit-un-equivalent-de-50-de-puree-de-fruits-sur-le-fourrage-equivalent-a-10-sur-l-ensemble-du-produit" />
+                <food:rank>65</food:rank>
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sirop-de-glucose-fructose" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/puree-de-peche-50" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sucre" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/gelifiant" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/pectines" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/correcteurs-d-acidite" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/acide-citrique" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/citrates-de-sodium" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/aromes" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/conservateur" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sorbate-de-potassium" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sirop-de-glucose-fructose" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/puree-d-abricot-50" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sucre" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/gelifiant" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/pectines" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/correcteurs-d-acidite" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/acide-citrique" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/citrates-de-sodium" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/aromes" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/conservateur" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sorbate-de-potassium" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sirop-de-glucose-fructose" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/puree-de-fraise-17-8" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/sucre" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/puree-de-framboise-concentree-5" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:containsIngredient>
+            <food:Ingredient>
+                <food:food rdf:resource="http://fr.openfoodfacts.org/ingredient/equivalent-a-21-2-de-puree-de-framboise" />
+            </food:Ingredient>
+        </food:containsIngredient>
+        <food:carbohydratesPer100g>57</food:carbohydratesPer100g>
+        <food:saturatedFatPer100g>2</food:saturatedFatPer100g>
+        <food:energyPer100g>1724</food:energyPer100g>
+        <food:nutritionScoreUkPer100g>13</food:nutritionScoreUkPer100g>
+        <food:sugarsPer100g>31</food:sugarsPer100g>
+        <food:fiberPer100g>1</food:fiberPer100g>
+        <food:saltPer100g>0.63</food:saltPer100g>
+        <food:fatPer100g>18</food:fatPer100g>
+        <food:nutritionScoreFrPer100g>13</food:nutritionScoreFrPer100g>
+        <food:sodiumPer100g>0.248031496062992</food:sodiumPer100g>
+        <food:proteinsPer100g>5</food:proteinsPer100g>
+    </rdf:Description>
+
+
+</rdf:RDF>

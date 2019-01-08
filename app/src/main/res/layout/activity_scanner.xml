@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <fragment
+            android:id="@+id/barcode_fragment"
+            android:name="info.androidhive.barcode.BarcodeReader"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:auto_focus="true"
+            app:use_flash="false" />
+
+        <!-- Scanner overlay animation -->
+        <info.androidhive.barcode.ScannerOverlay
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#44000000"
+            app:line_color="#dc2329"
+            app:line_speed="6"
+            app:line_width="4"
+            app:square_height="200"
+            app:square_width="200" />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

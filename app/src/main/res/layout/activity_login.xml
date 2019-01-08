@@ -1,0 +1,211 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center">
+
+    <LinearLayout
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:gravity="center">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:indeterminate="true"
+            android:visibility="visible"/>
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/Dialogs"
+            android:textSize="16dp"
+            android:visibility="visible"
+            android:text="Validation des données. Veuillez patienter..."/>
+    </LinearLayout>
+
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/login_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/fui_login"
+                android:textColor="@color/Dialogs"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/button_google_login"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/fui_ic_googleg_color_24dp"
+                android:drawableStart="@drawable/fui_ic_googleg_color_24dp"
+                android:padding="12dp"
+                android:text="@string/fui_sign_in_with_google"
+                android:textColor="@color/common_google_signin_btn_text_light"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/button_facebook_login"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="#2d4381"
+                    android:drawableLeft="@drawable/fui_ic_facebook_white_24dp"
+                    android:drawableStart="@drawable/fui_ic_facebook_white_24dp"
+                    android:padding="12dp"
+                    android:text="@string/fui_sign_in_with_facebook"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="OU"
+                android:textColor="@color/Dialogs" />
+
+
+            <EditText
+                android:id="@+id/login_emailid"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/transparent"
+                android:drawableLeft="@drawable/email"
+                android:drawablePadding="8dp"
+                android:drawableStart="@drawable/email"
+                android:gravity="center_vertical"
+                android:hint="@string/fui_email_hint"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:textColor="@color/Dialogs"
+                android:textColorHint="@color/Dialogs"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@color/Dialogs" />
+
+            <EditText
+                android:id="@+id/login_password"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:drawableLeft="@drawable/password"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical"
+                android:hint="@string/fui_password_hint"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:textColor="@color/Dialogs"
+                android:textColorHint="@color/Dialogs"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp"
+                android:paddingTop="8dp">
+
+                <CheckBox
+                    android:id="@+id/show_hide_password"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/fui_show_pwd"
+                    android:textColor="@color/Dialogs"
+                    android:textSize="13sp" />
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/loginBtn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="#0060dc"
+                android:drawableLeft="@drawable/fui_ic_mail_white_24dp"
+                android:drawableStart="@drawable/fui_ic_mail_white_24dp"
+                android:padding="12dp"
+                android:text="@string/fui_sign_in_with_email"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/createAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/fui_newUser"
+                android:textColor="@color/Dialogs"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/forgot_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/fui_trouble_signing_in"
+                android:textColor="@color/Dialogs"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</RelativeLayout>

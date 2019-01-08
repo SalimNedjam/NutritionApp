@@ -1,0 +1,14 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="nav_header_height">180dp</dimen>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+    <dimen name="circleProgressRadiusExtern">40dp</dimen>
+
+    <dimen name="circleProgressThicknessExtern">4dp</dimen>
+
+
+    <!-- Timeline -->
+</resources>

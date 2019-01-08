@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f2f2">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            app:elevation="0dp">
+
+            <android.support.v7.widget.Toolbar
+
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/transparent" />
+        </android.support.design.widget.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="0.5"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white">
+
+                    <LinearLayout
+                        android:id="@+id/name_search_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Recherche par nom"
+                            android:textSize="22sp" />
+
+                        >
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@+id/name_search_layout"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/rechercheNomAutoCompleteTextView"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="5"
+                            android:maxLines="1"
+                            android:hint="Veuillez saisir l'aliment"
+                            android:popupBackground="#979797"/>
+
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white">
+
+                    <LinearLayout
+                        android:id="@+id/rechercheCodeBarre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Recherche par code-barre"
+                            android:textSize="22sp" />
+
+                        >
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@+id/rechercheCodeBarre"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/rechercheCodeBarreEditText"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:hint="Veuillez saisir le code barre"
+                            android:layout_weight="5" />
+
+                        <ImageButton
+                            android:id="@+id/rechercheCodeBarreImageButton"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="3dp"
+                            android:layout_marginRight="3dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/thumb_transperent"
+                            android:padding="10dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/barcode" />
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="235dp"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingStart="10dp"
+                    android:text="Recherches récentes :" />
+
+                <ListView
+                    android:id="@+id/alimentsFavorisListView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/white" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/confirmerRechercheButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/roundtext1"
+                    android:text="Confirmer" />
+            </LinearLayout>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Nutrition App</string>
+    <string name="fui_show_pwd">Afficher le mot de passe.</string>
+    <string name="fui_forgot">Mot de passe oublié ?</string>
+    <string name="fui_newUser">Pas encore membre ? S\'inscrire ici.</string>
+    <string name="fui_login">Connexion</string>
+    <string name="signUp">Inscription</string>
+    <string name="fui_already_user">Revenir à la page de connexion.</string>
+    <string name="submit">Envoyer</string>
+    <string name="back">Revenir</string>
+    <string name="descriptionEndo">Doté d’une ossature fine, la femme ou l’homme endomorphe possède des épaules étroites, des membres courts. Menacé par la prise de poids, surtout autour du ventre, le régime alimentaire d’une personne ayant cette morphologie doit être bien mené pour éviter la prise de gras. Alors que la sèche est possible mais plus longue, la personne endomorphe peut prendre facilement de la masse musculaire.</string>
+    <string name="descriptionMeso">Le type mésomorphe allie un large squelette, notamment les chevilles et poignets, une musculature déjà existante et une bonne absorption des nutriments sans pour autant cumuler trop de gras. L’homme de type mésomorphe présente en général un buste en V. La femme mésomorphe présente un bassin de même largeur que les épaules.</string>
+    <string name="descriptionEcto">La principale caractéristique d’une personne de type ectomorphe est la minceur, voire même la maigreur. En effet, le type ectomorphe est celui qui détient la palme du squelette le plus fin, surtout aux chevilles et aux poignets. En général, les épaules et le bassin sont étroits et les membres plutôt longs. Gros brûleur de graisses, l’ectomorphe allie aussi souvent un tempérament nerveux.</string>
+    <string name="nav_accueil">Accueil</string>
+    <string name="nav_journal">Journal</string>
+    <string name="nav_statistiques">Statistiques</string>
+    <string name="nav_profile">Profil</string>
+    <string name="nav_about_us">À propos de nous</string>
+    <string-array name="nav_item_activity_titles">
+        <item>Accueil</item>
+        <item>Journal</item>
+        <item>Statistiques</item>
+        <item>Profil</item>
+    </string-array>
+    <string name="openDrawer">open_drawer</string>
+    <string name="closeDrawer">close_drawer</string>
+    <string name="action_logout">Se déconnecter</string>
+    <string name="facebook_app_id">163512037625465</string>
+    <string name="fb_login_protocol_scheme">fb163512037625465</string>
+    <string name="fui_sign_in_with_google" translation_description="Sign in button text">Se connecter avec Google</string>
+    <string name="fui_sign_in_with_facebook" translation_description="Sign in button text">Se connecter avec Facebook</string>
+    <string name="fui_sign_in_with_email" translation_description="Sign in button text">Se connecter avec une adresse e-mail</string>
+    <string name="fui_email_hint" translation_description="Hint in email input field">E-mail</string>
+    <string name="fui_password_hint" translation_description="Hint for dateInscription input field">Mot de passe</string>
+    <string name="fui_password_confirm_hint" translation_description="Hint for dateInscription confirm input field">Confirmer mot de passe</string>
+    <string name="fui_invalid_email_address" translation_description="Inline error for invalid email address">Cette adresse e-mail n\'est pas valide</string>
+    <string name="fui_missing_email_address" translation_description="Inline error for empty email address in input field">Saisissez votre adresse e-mail pour continuer</string>
+    <string name="fui_missing_password" translation_description="Inline error for empty dateInscription in input field">Saisissez votre mot de passe pour continuer</string>
+    <string name="fui_title_register_email" translation_description="Title for signup form">S\'inscrire</string>
+    <string name="fui_username_hint" translation_description="Hint for last name input field">Nom d\'utilisateur</string>
+    <string name="fui_error_user_collision" translation_description="Inline error when user signs up using an existing email account">Il existe déjà un compte associé à cette adresse e-mail.</string>
+    <string name="fui_create_account_preamble_tos_only" translation_description="Text shown when creating an account with only terms of service">J\'ai lu les Conditions générales d\'utilisation.</string>
+    <string name="fui_welcome_back_email_header" translation_description="Message for returning users">Bienvenue !</string>
+    <string name="fui_trouble_signing_in" translation_description="Link leading to forgot dateInscription flow">Vous ne parvenez pas à vous connecter ?</string>
+    <string name="fui_title_confirm_recover_password" translation_description="Password recovery confirmation message">Consultez votre boîte de réception</string>
+    <string name="fui_password_recovery_body" translation_description="Password recovery message body">Les instructions relatives à la réinitialisation de votre mot de passe seront envoyées à cette adresse e-mail.</string>
+    <string name="fui_email_sent" translation_description="Progress dialog success transition once email is sent">L\'email de confirmation a bien été envoyé.</string>
+    <string-array name="graphTypeChoices">
+        <item>Progression Poids</item>
+        <item>Progression Calories</item>
+        <item>Progression Macronutriments</item>
+    </string-array>
+    <string-array name="graphDateChoices">
+        <item>Dernier mois</item>
+        <item>Dernière semaine</item>
+    </string-array>
+    <string name="title_activity_ajout_aliment">AjoutAlimentActivity</string>
+    <string name="title_activity_recherche_aliment">RechercheAliment</string>
+</resources>
+

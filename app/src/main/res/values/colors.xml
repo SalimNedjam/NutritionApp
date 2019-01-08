@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="colorPrimary">#000000</color>
+    <color name="Dialogs">#424242</color>
+    <color name="colorAccent">#FFFFFF</color>
+
+
+    <color name="text_gray">#6B767D</color>
+
+
+    <color name="circleProgressCompleteStartGradient">#972c30</color>
+    <color name="circleProgressCompleteEndGradient">#972c30</color>
+
+
+    <color name="backgrounddark">#f0f0f0</color>
+
+
+    <color name="red_back">#faa7a4</color>
+    <color name="red">#ff5c56</color>
+
+    <color name="yello_back">#fff3ca</color>
+    <color name="yello">#eabb2f</color>
+
+    <color name="green_back">#dff5cb</color>
+    <color name="green">#5ba31d</color>
+
+    <color name="blue_back">#ace0fc</color>
+    <color name="blue">#1DAEFA</color>
+
+
+    <color name="subtext">#bcbec2</color>
+
+    <color name="bg_register">#2e3237</color>
+    <color name="colorCalories">@color/red</color>
+    <color name="colorProteines">@color/blue</color>
+    <color name="colorLipides">@color/green</color>
+    <color name="colorGlucides">@color/yello</color>
+    <color name="colorPoids">#7832d9</color>
+
+
+</resources>

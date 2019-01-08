@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="0dp">
+
+
+    <Spinner
+        android:id="@+id/graphTypeSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:visibility="visible" />
+
+    <Spinner
+        android:id="@+id/graphDateSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/graphTypeSpinner"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/macrosVisibilityLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/graph"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <CheckBox
+            android:id="@+id/proteinesCheckBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/blue"
+            android:checked="true"
+            android:text="Protéines" />
+
+        <CheckBox
+            android:id="@+id/lipidesCheckBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/green"
+            android:checked="true"
+            android:text="Lipides" />
+
+        <CheckBox
+            android:id="@+id/glucidesCheckBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/yello"
+            android:checked="true"
+            android:text="Glucides" />
+
+    </LinearLayout>
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graph"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@+id/graphDateSpinner"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:padding="10dp" />
+
+
+</RelativeLayout>
+

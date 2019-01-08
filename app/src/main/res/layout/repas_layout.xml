@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false">
+
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="10dp">
+
+        <RelativeLayout
+            android:id="@+id/repas_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1px"
+                        android:layout_margin="15dp"
+                        android:layout_weight="1"
+                        android:background="@color/Dialogs" />
+
+                    <TextView
+                        android:id="@+id/repas_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Repas"
+                        android:textSize="20sp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1px"
+                        android:layout_margin="15dp"
+                        android:layout_weight="1"
+                        android:background="@color/Dialogs" />
+
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/listView_repas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@drawable/listview_divider"
+                    android:isScrollContainer="false" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="20"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingStart="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="Total:"
+                        android:textColor="@color/Dialogs"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/repas_cal_cpt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="0.7"
+                        android:text="0 Kcal"
+                        android:textColor="@color/red"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:ignore="NestedWeights" />
+
+
+                    <TextView
+                        android:id="@+id/repas_prot_cpt"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight=".7"
+                        android:text="0 g"
+                        android:textColor="@color/blue"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/repas_lip_cpt"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight=".7"
+                        android:text="0 g"
+                        android:textColor="@color/green"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/repas_glu_cpt"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight=".7"
+                        android:text="0 g"
+                        android:textColor="@color/yello"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+        <ImageButton
+            android:id="@+id/add_aliment_repas"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignBottom="@+id/repas_layout"
+            android:layout_alignEnd="@id/repas_layout"
+            android:layout_alignRight="@id/repas_layout"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/thumb_transperent"
+            android:padding="8dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_add" />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>
