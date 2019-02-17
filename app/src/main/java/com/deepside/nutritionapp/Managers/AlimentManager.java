@@ -7,11 +7,11 @@ import com.google.firebase.database.DatabaseReference;
 
 
 public class AlimentManager extends DatabaseManager {
-    
+
     public AlimentManager() {
         TABLE_NAME = "Aliment";
     }
-    
+
     public void insert(Aliment a) {
         DatabaseReference ref = db.child(String.valueOf(a.getIdAliment()));
         ref.child("nom").setValue(a.getNom());
@@ -21,11 +21,11 @@ public class AlimentManager extends DatabaseManager {
         ref.child("quantiteProteines").setValue(a.getQuantiteProteines());
         ref.child("typeAliment").setValue(a.getTypeAliment().ordinal());
     }
-    
+
     public DatabaseReference prepare(final long idAliment) {
         return db.child(String.valueOf(idAliment));
     }
-    
+
     public Aliment get(DataSnapshot dataSnapshot) {
         final Aliment a = new Aliment();
         a.setIdAliment(Long.valueOf(dataSnapshot.getKey()));
@@ -37,10 +37,10 @@ public class AlimentManager extends DatabaseManager {
         a.setTypeAliment(TypeAliment.get(Integer.parseInt(dataSnapshot.child("typeAliment").getValue().toString())));
         return a;
     }
-    
+
     public void delete(long idAliment) {
         DatabaseReference ref = db.child(String.valueOf(idAliment));
         ref.removeValue();
     }
-    
+
 }

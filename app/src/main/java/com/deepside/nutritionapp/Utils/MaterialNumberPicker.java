@@ -28,7 +28,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.NumberPicker;
-
 import com.deepside.nutritionapp.R;
 
 import java.lang.reflect.Field;
@@ -37,7 +36,7 @@ import java.lang.reflect.Field;
  * Created by Stephen Vinouze on 22/09/2015.
  */
 public class MaterialNumberPicker extends NumberPicker {
-    
+
     private static final int MIN_VALUE = 1;
     private static final int MAX_VALUE = 10;
     private static final int DEFAULT_VALUE = 1;
@@ -45,18 +44,18 @@ public class MaterialNumberPicker extends NumberPicker {
     private static final int TEXT_COLOR = Color.BLACK;
     private static final int BACKGROUND_COLOR = Color.WHITE;
     private static final int SEPARATOR_COLOR = Color.TRANSPARENT;
-    
+
     private Builder mBuilder;
     private int mTextColor;
     private float mTextSize;
     private int mSeparatorColor;
     private boolean mEnableFocusability;
-    
+
     public MaterialNumberPicker(Context context) {
         super(context);
         initView();
     }
-    
+
     public MaterialNumberPicker(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
         initView();
@@ -82,11 +81,11 @@ public class MaterialNumberPicker extends NumberPicker {
             } else if (attr == R.styleable.MaterialNumberPicker_npWrapValue) {
                 setWrapSelectorWheel(a.getBoolean(attr, false));
             }
-            
+
         }
         a.recycle();
     }
-    
+
     private MaterialNumberPicker(Builder builder) {
         super(builder.context);
         initView();
@@ -102,15 +101,15 @@ public class MaterialNumberPicker extends NumberPicker {
         setWrapSelectorWheel(builder.wrapSelectorWheel);
         setFocusability(builder.enableFocusability);
     }
-    
+
     public final Builder getBuilder() {
         return mBuilder;
     }
-    
+
     public int getTextColor() {
         return mTextColor;
     }
-    
+
     /**
      * Uses reflection to access text color private attribute for both wheel and edit text inside the number picker.
      */
@@ -118,11 +117,11 @@ public class MaterialNumberPicker extends NumberPicker {
         mTextColor = textColor;
         updateTextAttributes();
     }
-    
+
     public int getSeparatorColor() {
         return mSeparatorColor;
     }
-    
+
     /**
      * Uses reflection to access divider private attribute and override its color
      * Use Color.Transparent if you wish to hide them
@@ -142,11 +141,11 @@ public class MaterialNumberPicker extends NumberPicker {
             }
         }
     }
-    
+
     public boolean isFocusabilityEnabled() {
         return mEnableFocusability;
     }
-    
+
     /**
      * Init number picker by disabling focusability of edit text embedded inside the number picker
      * We also override the edit text filter private attribute by using reflection as the formatter is still buggy while attempting to display the default value
@@ -172,7 +171,7 @@ public class MaterialNumberPicker extends NumberPicker {
             e.printStackTrace();
         }
     }
-    
+
     /**
      * Uses reflection to access text size private attribute for both wheel and edit text inside the number picker.
      */
@@ -180,7 +179,7 @@ public class MaterialNumberPicker extends NumberPicker {
         mTextSize = textSize;
         updateTextAttributes();
     }
-    
+
     private void updateTextAttributes() {
         for (int i = 0; i < getChildCount(); i++) {
             View child = getChildAt(i);
@@ -202,20 +201,20 @@ public class MaterialNumberPicker extends NumberPicker {
             }
         }
     }
-    
+
     private void setFocusability(boolean isFocusable) {
         mEnableFocusability = isFocusable;
         setDescendantFocusability(isFocusable ? FOCUS_AFTER_DESCENDANTS : FOCUS_BLOCK_DESCENDANTS);
     }
-    
+
     private float pixelsToSp(Context context, float px) {
         return px / context.getResources().getDisplayMetrics().scaledDensity;
     }
-    
+
     private float spToPixels(Context context, float sp) {
         return sp * context.getResources().getDisplayMetrics().scaledDensity;
     }
-    
+
     public static class Builder {
         private Context context;
         private Formatter formatter;
@@ -228,65 +227,65 @@ public class MaterialNumberPicker extends NumberPicker {
         private int defaultValue = DEFAULT_VALUE;
         private boolean enableFocusability = false;
         private boolean wrapSelectorWheel = false;
-        
+
         public Builder(@NonNull Context context) {
             this.context = context;
         }
-        
+
         public Builder formatter(Formatter formatter) {
             this.formatter = formatter;
             return this;
         }
-        
+
         public Builder backgroundColor(int backgroundColor) {
             this.backgroundColor = backgroundColor;
             return this;
         }
-        
+
         public Builder separatorColor(int separatorColor) {
             this.separatorColor = separatorColor;
             return this;
         }
-        
+
         public Builder textColor(int textColor) {
             this.textColor = textColor;
             return this;
         }
-        
+
         public Builder textSize(float textSize) {
             this.textSize = textSize;
             return this;
         }
-        
+
         public Builder minValue(int minValue) {
             this.minValue = minValue;
             return this;
         }
-        
+
         public Builder maxValue(int maxValue) {
             this.maxValue = maxValue;
             return this;
         }
-        
+
         public Builder defaultValue(int defaultValue) {
             this.defaultValue = defaultValue;
             return this;
         }
-        
+
         public Builder wrapSelectorWheel(boolean wrapSelectorWheel) {
             this.wrapSelectorWheel = wrapSelectorWheel;
             return this;
         }
-        
+
         public Builder enableFocusability(boolean enableFocusability) {
             this.enableFocusability = enableFocusability;
             return this;
         }
-        
+
         public MaterialNumberPicker build() {
             return new MaterialNumberPicker(this);
         }
-        
+
     }
-    
+
 }

@@ -6,10 +6,10 @@ package com.deepside.nutritionapp.Suivi;
 
 public enum Morphotype {
     ECTOMORPHE, MESOMORPHE, ENDOMORPHE;
-    
+
     private static Morphotype[] values = Morphotype.values();
-    
-    
+
+
     public static Morphotype get(int index) {
         return values[index];
     }

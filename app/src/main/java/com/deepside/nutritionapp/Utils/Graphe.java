@@ -2,15 +2,10 @@ package com.deepside.nutritionapp.Utils;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
-
 import com.deepside.nutritionapp.R;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
-import com.jjoe64.graphview.series.BarGraphSeries;
-import com.jjoe64.graphview.series.BaseSeries;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
-import com.jjoe64.graphview.series.PointsGraphSeries;
+import com.jjoe64.graphview.series.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,8 +20,8 @@ public class Graphe {
     private GraphView graphView;
     private ArrayList<BaseSeries<DataPoint>> series;
     private ArrayList<ArrayList<Point>> values;
-    
-    
+
+
     public Graphe(Context context, GraphView graphView, Class graphViewType, ArrayList<ArrayList<Point>> values) {
         Context context1 = context;
         this.graphView = graphView;
@@ -54,7 +49,7 @@ public class Graphe {
         graphView.getGridLabelRenderer().setNumHorizontalLabels(3);
         graphView.getViewport().setXAxisBoundsManual(true);
     }
-    
+
     public void drawGraph(int graphType) {
         if (graphType == Graphe.GRAPHE_TYPE_CALORIES) {
             DataPoint[] data = new DataPoint[values.get(0).size()];
@@ -66,7 +61,7 @@ public class Graphe {
             graphView.getViewport().setMinX(series.get(0).getLowestValueX());
             graphView.getViewport().setMaxX(series.get(0).getHighestValueX());
             graphView.addSeries(series.get(0));
-            
+
         } else if (graphType == Graphe.GRAPH_TYPE_MACRO) {
             ArrayList<DataPoint[]> points = new ArrayList<>();
             for (int i = 1; i < values.size(); i++) {
@@ -83,7 +78,7 @@ public class Graphe {
             graphView.addSeries(series.get(1));
             graphView.addSeries(series.get(2));
             graphView.addSeries(series.get(3));
-            
+
         } else {
             DataPoint[] data = new DataPoint[values.get(4).size()];
             for (int i = 0; i < values.get(4).size(); i++) {
@@ -96,7 +91,7 @@ public class Graphe {
             graphView.addSeries(series.get(4));
         }
     }
-    
+
     public void drawGraph(int graphType, Date dateFrom, Date dateTo) {
         if (graphType == Graphe.GRAPHE_TYPE_CALORIES) {
             ArrayList<DataPoint> data = new ArrayList<>();
@@ -112,7 +107,7 @@ public class Graphe {
             graphView.getViewport().setMinX(series.get(0).getLowestValueX());
             graphView.getViewport().setMaxX(series.get(0).getHighestValueX());
             graphView.addSeries(series.get(0));
-            
+
         } else if (graphType == Graphe.GRAPH_TYPE_MACRO) {
             ArrayList<DataPoint[]> points = new ArrayList<>();
             for (int i = 1; i < values.size(); i++) {
@@ -133,7 +128,7 @@ public class Graphe {
             graphView.addSeries(series.get(1));
             graphView.addSeries(series.get(2));
             graphView.addSeries(series.get(3));
-            
+
         } else {
             ArrayList<DataPoint> data = new ArrayList<>();
             for (int i = 0; i < values.get(4).size(); i++) {
@@ -148,14 +143,14 @@ public class Graphe {
             graphView.getViewport().setMinX(series.get(4).getLowestValueX());
             graphView.getViewport().setMaxX(series.get(4).getHighestValueX());
             graphView.addSeries(series.get(4));
-            
+
         }
     }
-    
+
     public void setValues(ArrayList<ArrayList<Point>> values) {
         this.values = values;
     }
-    
+
     public void setVisibility(int macroType, boolean visible) {
         if (visible) {
             graphView.addSeries(series.get(macroType));
@@ -163,5 +158,5 @@ public class Graphe {
             graphView.removeSeries(series.get(macroType));
         }
     }
-    
+
 }

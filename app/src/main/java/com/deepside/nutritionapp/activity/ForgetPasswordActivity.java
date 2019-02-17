@@ -10,7 +10,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.deepside.nutritionapp.R;
 import com.deepside.nutritionapp.Utils.Utils;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,10 +21,10 @@ import com.google.firebase.auth.FirebaseAuth;
  */
 
 public class ForgetPasswordActivity extends Activity implements View.OnClickListener {
-    
+
     private final static String TAG = "ForgetPasswordActivity";
     private EditText mEmailRequete;
-    
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,9 +34,9 @@ public class ForgetPasswordActivity extends Activity implements View.OnClickList
         TextView envoieBtn = findViewById(R.id.forgot_button);
         envoieBtn.setOnClickListener(this);
         gotoLoginBtn.setOnClickListener(this);
-        
+
     }
-    
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -49,11 +48,11 @@ public class ForgetPasswordActivity extends Activity implements View.OnClickList
                             if (task.isSuccessful()) {
                                 Toast.makeText(ForgetPasswordActivity.this, "Réstauration de mot de passe faite avec succès.", Toast.LENGTH_SHORT).show();
                                 onBackPressed();
-                                
+
                             } else {
                                 Toast.makeText(ForgetPasswordActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 findViewById(R.id.signup_layout).startAnimation(AnimationUtils.loadAnimation(ForgetPasswordActivity.this, R.anim.shake));
-                                
+
                             }
                         }
                     });
@@ -63,8 +62,8 @@ public class ForgetPasswordActivity extends Activity implements View.OnClickList
             case R.id.backToLoginBtn:
                 onBackPressed();
                 break;
-            
+
         }
     }
-    
+
 }

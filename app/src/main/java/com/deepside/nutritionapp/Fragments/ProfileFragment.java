@@ -17,14 +17,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import android.widget.Toast;
-
+import android.widget.*;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.deepside.nutritionapp.Managers.HistoriquePoidsManager;
@@ -32,14 +25,7 @@ import com.deepside.nutritionapp.Managers.RecommandationManager;
 import com.deepside.nutritionapp.Managers.RegimeManager;
 import com.deepside.nutritionapp.Managers.UtilisateurManager;
 import com.deepside.nutritionapp.R;
-import com.deepside.nutritionapp.Suivi.ActivitePhysique;
-import com.deepside.nutritionapp.Suivi.HistoriquePoids;
-import com.deepside.nutritionapp.Suivi.Morphotype;
-import com.deepside.nutritionapp.Suivi.Niveau;
-import com.deepside.nutritionapp.Suivi.Objectif;
-import com.deepside.nutritionapp.Suivi.Regime;
-import com.deepside.nutritionapp.Suivi.Sexe;
-import com.deepside.nutritionapp.Suivi.Utilisateur;
+import com.deepside.nutritionapp.Suivi.*;
 import com.deepside.nutritionapp.Utils.CircleTransform;
 import com.deepside.nutritionapp.Utils.MaterialNumberPicker;
 import com.deepside.nutritionapp.Utils.Utils;
@@ -66,11 +52,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private static final String ARG_PARAM2 = "param2";
     private static final String TAG = ProfileFragment.class.getSimpleName();
     private final int PICK_IMAGE_REQUEST = 71;
+    ImageView uploadView;
+    Uri photoUri;
     private FirebaseStorage storage;
     private StorageReference storageReference;
-    ImageView uploadView;
     private View thumbView;
-    Uri photoUri;
     private Bitmap bitmap;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private View mView;
@@ -90,11 +76,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private SeekBar poidsDésiréBar, poidsBar, activitéBar;
     private String mParam1;
     private OnFragmentInteractionListener mListener;
-    
+
     public ProfileFragment() {
     }
-    
-    
+
+
     public static ProfileFragment newInstance(String param1, String param2) {
         ProfileFragment fragment = new ProfileFragment();
         Bundle args = new Bundle();
@@ -103,19 +89,19 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         fragment.setArguments(args);
         return fragment;
     }
-    
+
     private static Bitmap drawableToBitmap(Drawable drawable) {
         if (drawable instanceof BitmapDrawable) {
             return ((BitmapDrawable) drawable).getBitmap();
         }
-        if (drawable==null) drawable=getApplicationContext().getResources().getDrawable( R.drawable.user);
+        if (drawable == null) drawable = getApplicationContext().getResources().getDrawable(R.drawable.user);
         Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
         drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
         drawable.draw(canvas);
         return bitmap;
     }
-    
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -127,11 +113,10 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         mObjectifArrayList = new ArrayList<>();
         mNiveauArrayList = new ArrayList<>();
         morphotypeArrayList = new ArrayList<>();
-        
+
     }
-    
-    
-    
+
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_profile, container, false);
@@ -144,13 +129,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         mUserProfileName.setText(mAuth.getCurrentUser().getDisplayName());
         return mView;
     }
-    
+
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
     }
-    
+
     private Drawable getThumb(int progress) {
         ((TextView) thumbView.findViewById(R.id.tvProgress)).setText(String.valueOf(progress) + " kg");
         thumbView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
@@ -160,13 +145,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         thumbView.draw(canvas);
         return new BitmapDrawable(getResources(), bitmap);
     }
-    
+
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
-    
+
     private void changeBackground(int pos, LinearLayout tagLinearLayout, ArrayList<TextView> textViewArrayList) {
         for (int i = 0; i < tagLinearLayout.getChildCount(); i++) {
             if (i == pos) {
@@ -178,7 +163,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             }
         }
     }
-    
+
     private void initView() {
         RelativeLayout relativeLayout = mView.findViewById(R.id.profile_layout);
         imgProfile = mView.findViewById(R.id.user_profile_photo);
@@ -188,9 +173,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         mObjectifLayout = mView.findViewById(R.id.objectif_layout);
         mSexeLayout = mView.findViewById(R.id.sex_layout);
         mEditButton = mView.findViewById(R.id.imageButton);
-        mLayoutButton =mView.findViewById(R.id.layoutButton);
-        mTextButton =mView.findViewById(R.id.textButton);
-    
+        mLayoutButton = mView.findViewById(R.id.layoutButton);
+        mTextButton = mView.findViewById(R.id.textButton);
+
         mNiveauArrayList.add((TextView) mView.findViewById(R.id.entrainement1));
         mNiveauArrayList.add((TextView) mView.findViewById(R.id.entrainement2));
         mNiveauArrayList.add((TextView) mView.findViewById(R.id.entrainement3));
@@ -205,17 +190,15 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         poidsBar = mView.findViewById(R.id.poids_bar);
         activitéBar = mView.findViewById(R.id.activité_bar);
         mUserProfileName = mView.findViewById(R.id.user_profile_name);
-        
-    
-        
-    
+
+
     }
-    
+
     private void UpdateProfileView() {
         try {
             StorageReference ref = FirebaseStorage.getInstance().getReference().child("images/" + mAuth.getCurrentUser().getUid());
-            Glide.with(getApplicationContext()).using(new FirebaseImageLoader()).load(ref).crossFade().thumbnail(0.5f).bitmapTransform(new CircleTransform(getApplicationContext())).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache( true ).into(imgProfile);
-        
+            Glide.with(getApplicationContext()).using(new FirebaseImageLoader()).load(ref).crossFade().thumbnail(0.5f).bitmapTransform(new CircleTransform(getApplicationContext())).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).into(imgProfile);
+
         } catch (Exception e) {
             uploadImage();
         }
@@ -224,24 +207,24 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
                     seekBar.setThumb(getThumb(progress));
-                    if (progress<10) seekBar.setProgress(10);
-                    else if (progress>190) seekBar.setProgress(190);
+                    if (progress < 10) seekBar.setProgress(10);
+                    else if (progress > 190) seekBar.setProgress(190);
                     if (isselected[1] == 0) {
-                        if (progress<poidsBar.getProgress())
+                        if (progress < poidsBar.getProgress())
                             seekBar.setProgress(poidsBar.getProgress());
-                
+
                     }
                     if (isselected[1] == 1) {
-                        if (progress>poidsBar.getProgress())
+                        if (progress > poidsBar.getProgress())
                             seekBar.setProgress(poidsBar.getProgress());
                     }
-            
+
                 }
-        
+
                 @Override
                 public void onStartTrackingTouch(SeekBar seekBar) {
                 }
-        
+
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
                 }
@@ -250,24 +233,24 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
                     seekBar.setThumb(getThumb(progress));
-                    if (progress<10) seekBar.setProgress(10);
-                    else if (progress>190) seekBar.setProgress(190);
+                    if (progress < 10) seekBar.setProgress(10);
+                    else if (progress > 190) seekBar.setProgress(190);
                     if (isselected[1] == 0) {
-                        if (progress>poidsDésiréBar.getProgress())
+                        if (progress > poidsDésiréBar.getProgress())
                             poidsDésiréBar.setProgress(seekBar.getProgress());
-                
+
                     }
                     if (isselected[1] == 1) {
-                        if (progress<poidsDésiréBar.getProgress())
+                        if (progress < poidsDésiréBar.getProgress())
                             poidsDésiréBar.setProgress(seekBar.getProgress());
                     }
-            
+
                 }
-        
+
                 @Override
                 public void onStartTrackingTouch(SeekBar seekBar) {
                 }
-        
+
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
                 }
@@ -276,31 +259,31 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             poidsDésiréBar.setThumb(getThumb(poidsDésiréBar.getProgress()));
             editMode = false;
             switchMode();
-        
+
         } else {
             dumpUser(mUser);
             poidsDésiréBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
                     seekBar.setThumb(getThumb(progress));
-                    if (progress<10) seekBar.setProgress(10);
-                    else if (progress>190) seekBar.setProgress(190);
+                    if (progress < 10) seekBar.setProgress(10);
+                    else if (progress > 190) seekBar.setProgress(190);
                     if (isselected[1] == 0) {
-                        if (progress<poidsBar.getProgress())
+                        if (progress < poidsBar.getProgress())
                             seekBar.setProgress(poidsBar.getProgress());
-                
+
                     }
                     if (isselected[1] == 1) {
-                        if (progress>poidsBar.getProgress())
+                        if (progress > poidsBar.getProgress())
                             seekBar.setProgress(poidsBar.getProgress());
                     }
-            
+
                 }
-        
+
                 @Override
                 public void onStartTrackingTouch(SeekBar seekBar) {
                 }
-        
+
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
                 }
@@ -309,34 +292,34 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
                     seekBar.setThumb(getThumb(progress));
-                    if (progress<10) seekBar.setProgress(10);
-                    else if (progress>190) seekBar.setProgress(190);
+                    if (progress < 10) seekBar.setProgress(10);
+                    else if (progress > 190) seekBar.setProgress(190);
                     if (isselected[1] == 0) {
-                        if (progress>poidsDésiréBar.getProgress())
+                        if (progress > poidsDésiréBar.getProgress())
                             poidsDésiréBar.setProgress(seekBar.getProgress());
-                
+
                     }
                     if (isselected[1] == 1) {
-                        if (progress<poidsDésiréBar.getProgress())
+                        if (progress < poidsDésiréBar.getProgress())
                             poidsDésiréBar.setProgress(seekBar.getProgress());
                     }
-            
+
                 }
-        
+
                 @Override
                 public void onStartTrackingTouch(SeekBar seekBar) {
                 }
-        
+
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
                 }
             });
             poidsBar.setThumb(getThumb(poidsBar.getProgress()));
             poidsDésiréBar.setThumb(getThumb(poidsDésiréBar.getProgress()));
-    
-    
+
+
             editMode = false;
-        
+
         }
         imgProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -344,7 +327,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 ShowPopup();
             }
         });
-        
+
         for (int i = 0; i < mNiveauLayout.getChildCount(); i++) {
             mNiveauLayout.getChildAt(i).setOnClickListener(this);
             mNiveauLayout.getChildAt(i).setClickable(false);
@@ -366,7 +349,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         for (int i = 0; i < mMorphotypeLayoutIcons.getChildCount(); i++) {
             mMorphotypeLayoutIcons.getChildAt(i).setClickable(false);
             mMorphotypeLayoutIcons.getChildAt(i).setVisibility(View.GONE);
-            
+
         }
         for (int i = 0; i < mObjectifLayout.getChildCount(); i++) {
             mObjectifLayout.getChildAt(i).setOnClickListener(this);
@@ -376,7 +359,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 mObjectifLayout.getChildAt(i).setBackground(getResources().getDrawable(R.drawable.roundtext2));
                 mObjectifArrayList.get(i).setTextColor(Color.parseColor("#ffffff"));
             }
-            
+
         }
         for (int i = 0; i < mSexeLayout.getChildCount(); i++) {
             mSexeLayout.getChildAt(i).setOnClickListener(this);
@@ -392,10 +375,10 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         poidsDésiréBar.setEnabled(false);
         poidsBar.setEnabled(false);
         mLayoutButton.setOnClickListener(this);
-        
-        
+
+
     }
-    
+
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.morphotype1_layout:
@@ -453,10 +436,10 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             case R.id.layoutButton:
                 switchMode();
                 break;
-            
+
         }
     }
-    
+
     private void switchMode() {
         if (!editMode) {
             editMode = true;
@@ -490,12 +473,12 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 mSexeLayout.getChildAt(i).setVisibility(View.VISIBLE);
                 mSexeLayout.getChildAt(i).setClickable(true);
             }
-            
+
         } else {
             editMode = false;
             mEditButton.setImageResource(R.drawable.edit_ic);
             mTextButton.setText("Editer le profil");
-    
+
             poidsDésiréBar.setEnabled(false);
             poidsBar.setEnabled(false);
             activitéBar.setEnabled(false);
@@ -508,28 +491,28 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             }
             for (int i = 0; i < mNiveauLayout.getChildCount(); i++) {
                 if (i != isselected[0]) mNiveauLayout.getChildAt(i).setVisibility(View.GONE);
-                
+
             }
             for (int i = 0; i < mObjectifLayout.getChildCount(); i++) {
                 if (i != isselected[1]) mObjectifLayout.getChildAt(i).setVisibility(View.GONE);
-                
+
             }
             for (int i = 0; i < mSexeLayout.getChildCount(); i++) {
                 if (i != isselected[2]) mSexeLayout.getChildAt(i).setVisibility(View.GONE);
-                
+
             }
             for (int i = 0; i < mMorphotypeLayout.getChildCount(); i++) {
                 if (i != isselected[3]) mMorphotypeLayout.getChildAt(i).setVisibility(View.GONE);
-                
+
             }
             for (int i = 0; i < mMorphotypeLayoutIcons.getChildCount(); i++) {
                 mMorphotypeLayoutIcons.getChildAt(i).setVisibility(View.GONE);
-                
+
             }
             updateUser(mUser);
         }
     }
-    
+
     private void dumpUser(Utilisateur user) {
         poidsBar.setProgress((int) user.getPoids());
         poidsBar.setThumb(getThumb(poidsBar.getProgress()));
@@ -552,7 +535,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             case FEMME:
                 isselected[2] = 1;
                 break;
-            
+
         }
         switch (user.getObjectif()) {
             case GAIN_MASSE:
@@ -561,7 +544,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             case PERTE_POIDS:
                 isselected[1] = 1;
                 break;
-            
+
         }
         switch (user.getNiveau()) {
             case DEBUTANT:
@@ -589,15 +572,15 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         for (int i = 2; i >= 0; i--) {
             ((MaterialNumberPicker) (mTailleBar.getChildAt(i))).setValue(taille % 10);
             taille = taille / 10;
-            
+
         }
         for (int i = 1; i >= 0; i--) {
             ((MaterialNumberPicker) (mAgeBar.getChildAt(i))).setValue(age % 10);
             age = age / 10;
         }
-        
+
     }
-    
+
     private void updateUser(Utilisateur user) {
         switch (isselected[3]) {
             case 0:
@@ -617,7 +600,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             case 1:
                 user.setSexe(Sexe.FEMME);
                 break;
-            
+
         }
         switch (isselected[1]) {
             case 0:
@@ -626,7 +609,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             case 1:
                 user.setObjectif(Objectif.PERTE_POIDS);
                 break;
-            
+
         }
         switch (isselected[0]) {
             case 0:
@@ -644,13 +627,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             if (i != 3) {
                 taille += ((MaterialNumberPicker) (mTailleBar.getChildAt(i))).getValue() * Math.pow(10, 2 - i);
             }
-            
+
         }
         user.setTaille(taille);
         for (int i = 0; i < mAgeBar.getChildCount(); i++) {
             if (i != 2)
                 age += ((MaterialNumberPicker) (mAgeBar.getChildAt(i))).getValue() * Math.pow(10, 1 - i);
-            
+
         }
         user.setAge(age);
         switch (activitéBar.getProgress()) {
@@ -678,24 +661,24 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         Regime regime = new Regime(user);
         regime.calculPlanAlimentaire(user);
         regimeManager.insert(regime);
-        RecommandationManager recommandationManager=new RecommandationManager();
+        RecommandationManager recommandationManager = new RecommandationManager();
         recommandationManager.open();
         recommandationManager.delete(user.getIdUtilisateur());
         Utils.dumpDatasnapshot();
-        
+
     }
-    
+
     private void ShowPopup() {
         myDialog.setContentView(R.layout.popup_image);
         ImageView photoView = myDialog.findViewById(R.id.user_photo);
-        Glide.with(getApplicationContext()).load(bitmapToByte(drawableToBitmap(imgProfile.getDrawable()))).crossFade().thumbnail(0.5f).bitmapTransform(new CircleTransform(mView.getContext())).diskCacheStrategy(DiskCacheStrategy.NONE)    .skipMemoryCache( true ).into(photoView);
+        Glide.with(getApplicationContext()).load(bitmapToByte(drawableToBitmap(imgProfile.getDrawable()))).crossFade().thumbnail(0.5f).bitmapTransform(new CircleTransform(mView.getContext())).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).into(photoView);
         ImageView exitView = myDialog.findViewById(R.id.action_exit);
         exitView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 myDialog.dismiss();
                 myDialog.cancel();
-                
+
             }
         });
         ImageView chooseView = myDialog.findViewById(R.id.action_choose);
@@ -703,24 +686,24 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View v) {
                 chooseImage();
-                
+
                 myDialog.dismiss();
                 myDialog.cancel();
-                
+
             }
         });
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         myDialog.show();
     }
-    
+
     private void chooseImage() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
-        
+
     }
-    
+
     private void uploadImage() {
         if (filePath != null) {
             final ProgressDialog progressDialog = new ProgressDialog(getContext());
@@ -731,9 +714,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     progressDialog.dismiss();
-                    Glide.with(getApplicationContext()).load(bitmapToByte(bitmap)).crossFade().thumbnail(0.5f).bitmapTransform(new CircleTransform(mView.getContext())).diskCacheStrategy(DiskCacheStrategy.NONE)    .skipMemoryCache( true ).into(Utils.imgProfile);
-    
-                    Glide.with(getApplicationContext()).load(bitmapToByte(bitmap)).crossFade().thumbnail(0.5f).bitmapTransform(new CircleTransform(mView.getContext())).diskCacheStrategy(DiskCacheStrategy.NONE)    .skipMemoryCache( true ).into(imgProfile);
+                    Glide.with(getApplicationContext()).load(bitmapToByte(bitmap)).crossFade().thumbnail(0.5f).bitmapTransform(new CircleTransform(mView.getContext())).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).into(Utils.imgProfile);
+
+                    Glide.with(getApplicationContext()).load(bitmapToByte(bitmap)).crossFade().thumbnail(0.5f).bitmapTransform(new CircleTransform(mView.getContext())).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).into(imgProfile);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -746,13 +729,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                     double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
                     progressDialog.setMessage("Uploaded " + (int) progress + "%");
-                    
+
                 }
             });
-            
+
         }
     }
-    
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -761,26 +744,26 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), filePath);
                 uploadImage();
-    
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
-    
+
     private byte[] bitmapToByte(Bitmap bitmap) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
         byte[] byteArray = stream.toByteArray();
         return byteArray;
     }
-    
+
     public void setImage(ImageView imageView) {
         StorageReference ref = storage.getReference().child("images/" + mUser.getIdUtilisateur());
-        Glide.with(this).using(new FirebaseImageLoader()).load(ref).crossFade().thumbnail(0.5f).bitmapTransform(new CircleTransform(mView.getContext())).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache( true ).into(imageView);
-        
+        Glide.with(this).using(new FirebaseImageLoader()).load(ref).crossFade().thumbnail(0.5f).bitmapTransform(new CircleTransform(mView.getContext())).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).into(imageView);
+
     }
-    
+
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
     }

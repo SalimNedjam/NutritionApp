@@ -1,21 +1,16 @@
 package com.deepside.nutritionapp.Managers;
 
 
-import com.deepside.nutritionapp.Suivi.ActivitePhysique;
-import com.deepside.nutritionapp.Suivi.Morphotype;
-import com.deepside.nutritionapp.Suivi.Niveau;
-import com.deepside.nutritionapp.Suivi.Objectif;
-import com.deepside.nutritionapp.Suivi.Sexe;
-import com.deepside.nutritionapp.Suivi.Utilisateur;
+import com.deepside.nutritionapp.Suivi.*;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 
 public class UtilisateurManager extends DatabaseManager {
-    
+
     public UtilisateurManager() {
         TABLE_NAME = "Utilisateur";
     }
-    
+
     public void insert(Utilisateur u) {
         DatabaseReference ref = db.child(String.valueOf(u.getIdUtilisateur()));
         ref.child("username").setValue(u.getUsername());
@@ -23,17 +18,15 @@ public class UtilisateurManager extends DatabaseManager {
         ref.child("age").setValue(u.getAge());
         ref.child("taille").setValue(u.getTaille());
         ref.child("poids").setValue(u.getPoids());
-        try
-        {
+        try {
             ref.child("poidsDesire").setValue(u.getPoidsDesire());
             ref.child("sexe").setValue(u.getSexe().ordinal());
             ref.child("activite").setValue(u.getActivite().ordinal());
             ref.child("morphotype").setValue(u.getMorphotype().ordinal());
             ref.child("niveau").setValue(u.getNiveau().ordinal());
             ref.child("objectif").setValue(u.getObjectif().ordinal());
-            
-        }catch (NullPointerException e)
-        {
+
+        } catch (NullPointerException e) {
             ref.child("poidsDesire").setValue(null);
             ref.child("sexe").setValue(null);
             ref.child("activite").setValue(null);
@@ -42,11 +35,11 @@ public class UtilisateurManager extends DatabaseManager {
             ref.child("objectif").setValue(null);
         }
     }
-    
+
     public DatabaseReference prepare(String idUtilisateur) {
         return db.child(idUtilisateur);
     }
-    
+
     public Utilisateur get(DataSnapshot dataSnapshot) {
         Utilisateur u = new Utilisateur();
         u.setIdUtilisateur(dataSnapshot.getKey());
@@ -67,7 +60,7 @@ public class UtilisateurManager extends DatabaseManager {
         }
         return u;
     }
-    
+
     public void delete(String idUtilisateur) {
         DatabaseReference ref = db.child(idUtilisateur);
         ref.removeValue();

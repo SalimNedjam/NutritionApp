@@ -13,20 +13,20 @@ import java.util.Comparator;
 import java.util.Date;
 
 public class HistoriquePoidsManager extends DatabaseManager {
-    
+
     public HistoriquePoidsManager() {
         TABLE_NAME = "HistoriquePoids";
     }
-    
+
     public void insert(HistoriquePoids h) {
         DatabaseReference ref = db.child(h.getIdUtilisateur());
         ref.child(DateUtils.stringify(h.getDate())).setValue(h.getPoids());
     }
-    
+
     public DatabaseReference prepare(String idUtilisateur, Date date) {
         return db.child(idUtilisateur).child(DateUtils.stringify(date));
     }
-    
+
     public HistoriquePoids get(DataSnapshot dataSnapshot) {
         HistoriquePoids h = new HistoriquePoids();
         h.setIdUtilisateur(dataSnapshot.getRef().getParent().getKey());
@@ -38,11 +38,11 @@ public class HistoriquePoidsManager extends DatabaseManager {
         }
         return h;
     }
-    
+
     public DatabaseReference prepare(String idUtilisateur) {
         return db.child(idUtilisateur);
     }
-    
+
     public ArrayList<HistoriquePoids> getAll(DataSnapshot dataSnapshot) {
         ArrayList<HistoriquePoids> hList = new ArrayList<>();
         HistoriquePoids h;
@@ -57,7 +57,7 @@ public class HistoriquePoidsManager extends DatabaseManager {
             }
             hList.add(h);
         }
-        Collections.sort(hList,new Comparator<HistoriquePoids>() {
+        Collections.sort(hList, new Comparator<HistoriquePoids>() {
             @Override
             public int compare(HistoriquePoids historiquePoids, HistoriquePoids t1) {
                 return historiquePoids.getDate().compareTo(t1.getDate());
@@ -65,8 +65,8 @@ public class HistoriquePoidsManager extends DatabaseManager {
         });
         return hList;
     }
-    
-    
+
+
     public void delete(String idUtilisateur, Date date) {
         DatabaseReference ref = db.child(idUtilisateur).child(DateUtils.stringify(date));
         ref.removeValue();

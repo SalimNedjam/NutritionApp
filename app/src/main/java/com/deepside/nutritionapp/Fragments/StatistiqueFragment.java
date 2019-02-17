@@ -7,12 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
-
+import android.widget.*;
 import com.deepside.nutritionapp.Managers.AlimentManager;
 import com.deepside.nutritionapp.Managers.BilanManager;
 import com.deepside.nutritionapp.Managers.HistoriquePoidsManager;
@@ -29,11 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.*;
 
 
 public class StatistiqueFragment extends Fragment {
@@ -44,13 +35,13 @@ public class StatistiqueFragment extends Fragment {
     private CheckBox[] macrosVisibilityCheckBoxes;
     private Graphe graphe;
     private Calendar c;
-    
+
     private int graphType = Graphe.GRAPH_TYPE_POIDS, graphDate = -30;
     private OnFragmentInteractionListener mListener;
-    
+
     public StatistiqueFragment() {
     }
-    
+
     public static StatistiqueFragment newInstance(String param1, String param2) {
         StatistiqueFragment fragment = new StatistiqueFragment();
         Bundle args = new Bundle();
@@ -59,7 +50,7 @@ public class StatistiqueFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-    
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,10 +59,8 @@ public class StatistiqueFragment extends Fragment {
             String param2 = getArguments().getString(ARG_PARAM2);
         }
     }
-    
-    
-    
-    
+
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -98,7 +87,7 @@ public class StatistiqueFragment extends Fragment {
             values.add(new ArrayList<Point>());
             graphe = new Graphe(getActivity(), graphView, LineGraphSeries.class, values);
             graphView.getGridLabelRenderer().setHorizontalAxisTitle("Jour");
-    
+
             graphDateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -107,18 +96,14 @@ public class StatistiqueFragment extends Fragment {
                         case 0:
                             graphDate = -30;
                             graphView.getGridLabelRenderer().setNumHorizontalLabels(15);
-                            
-    
-    
-    
+
+
                             break;
                         case 1:
                             graphDate = -7;
                             graphView.getGridLabelRenderer().setNumHorizontalLabels(7);
-    
-    
-    
-    
+
+
                             break;
                         default:
                             break;
@@ -126,7 +111,7 @@ public class StatistiqueFragment extends Fragment {
                     c.add(Calendar.DAY_OF_MONTH, graphDate);
                     graphe.drawGraph(graphType, c.getTime(), new Date());
                 }
-                
+
                 @Override
                 public void onNothingSelected(AdapterView<?> parent) {
                 }
@@ -140,19 +125,19 @@ public class StatistiqueFragment extends Fragment {
                             graphType = Graphe.GRAPH_TYPE_POIDS;
                             macrosVisibilityLayout.setVisibility(View.INVISIBLE);
                             graphView.getGridLabelRenderer().setVerticalAxisTitle("KG");
-    
-    
+
+
                             break;
                         case 1:
                             graphType = Graphe.GRAPHE_TYPE_CALORIES;
                             macrosVisibilityLayout.setVisibility(View.INVISIBLE);
                             graphView.getGridLabelRenderer().setVerticalAxisTitle("KCAL");
-    
+
                             break;
                         case 2:
                             graphType = Graphe.GRAPH_TYPE_MACRO;
                             graphView.getGridLabelRenderer().setVerticalAxisTitle("G");
-    
+
                             macrosVisibilityLayout.setVisibility(View.VISIBLE);
                             for (CheckBox macrosVisibilityCheckBoxe : macrosVisibilityCheckBoxes) {
                                 macrosVisibilityCheckBoxe.setChecked(true);
@@ -164,7 +149,7 @@ public class StatistiqueFragment extends Fragment {
                     c.add(Calendar.DAY_OF_MONTH, graphDate);
                     graphe.drawGraph(graphType, c.getTime(), new Date());
                 }
-                
+
                 @Override
                 public void onNothingSelected(AdapterView<?> parent) {
                 }
@@ -184,75 +169,75 @@ public class StatistiqueFragment extends Fragment {
             hm.open();
             bm.open();
             am.open();
-    
-    
-                ArrayList<HistoriquePoids> hList = hm.getAll(Utils.sDataSnapshot.child("HistoriquePoids").child(user.getUid()));
-                for (HistoriquePoids h : hList) {
-                    values.get(4).add(new Point(h.getDate(), h.getPoids()));
-                }
-                c = Calendar.getInstance();
-                c.add(Calendar.DAY_OF_MONTH, graphDate);
-                graphe.drawGraph(graphType, c.getTime(), new Date());
+
+
+            ArrayList<HistoriquePoids> hList = hm.getAll(Utils.sDataSnapshot.child("HistoriquePoids").child(user.getUid()));
+            for (HistoriquePoids h : hList) {
+                values.get(4).add(new Point(h.getDate(), h.getPoids()));
+            }
+            c = Calendar.getInstance();
+            c.add(Calendar.DAY_OF_MONTH, graphDate);
+            graphe.drawGraph(graphType, c.getTime(), new Date());
             ArrayList<Bilan> bilans = bm.getAll(Utils.sDataSnapshot.child("Bilan").child(user.getUid()));
             HashSet<Long> idAlimentsSet = new HashSet<>();
             HashMap<Long, Aliment> alimentsSet = new HashMap<>();
-                for (Bilan b : bilans) {
-                    for (Consommation c : b.getConsommations()) {
-                        idAlimentsSet.add(c.getIdAliment());
+            for (Bilan b : bilans) {
+                for (Consommation c : b.getConsommations()) {
+                    idAlimentsSet.add(c.getIdAliment());
+                }
+            }
+            for (Long l : idAlimentsSet) {
+                if (Utils.sDataSnapshot.child("Aliment").child(String.valueOf(l)).exists()) {
+                    alimentsSet.put(l, am.get(Utils.sDataSnapshot.child("Aliment").child(String.valueOf(l))));
+                }
+            }
+            float caloriesCount, proteinesCount, lipidesCount, glucidesCount;
+            for (Bilan b : bilans) {
+                caloriesCount = 0;
+                proteinesCount = 0;
+                lipidesCount = 0;
+                glucidesCount = 0;
+                for (Consommation c : b.getConsommations()) {
+                    if (alimentsSet.containsKey(c.getIdAliment())) {
+                        Aliment a = alimentsSet.get(c.getIdAliment());
+                        caloriesCount += a.getNbCalories() * c.getQuantite() / 100;
+                        proteinesCount += a.getQuantiteProteines() * c.getQuantite() / 100;
+                        lipidesCount += a.getQuantiteLipides() * c.getQuantite() / 100;
+                        glucidesCount += a.getQuantiteGlucides() * c.getQuantite() / 100;
                     }
                 }
-                for (Long l : idAlimentsSet) {
-                    if (Utils.sDataSnapshot.child("Aliment").child(String.valueOf(l)).exists()) {
-                        alimentsSet.put(l, am.get(Utils.sDataSnapshot.child("Aliment").child(String.valueOf(l))));
-                    }
-                }
-                float caloriesCount, proteinesCount, lipidesCount, glucidesCount;
-                for (Bilan b : bilans) {
-                    caloriesCount = 0;
-                    proteinesCount = 0;
-                    lipidesCount = 0;
-                    glucidesCount = 0;
-                    for (Consommation c : b.getConsommations()) {
-                        if (alimentsSet.containsKey(c.getIdAliment())) {
-                            Aliment a = alimentsSet.get(c.getIdAliment());
-                            caloriesCount += a.getNbCalories() * c.getQuantite() / 100;
-                            proteinesCount += a.getQuantiteProteines() * c.getQuantite() / 100;
-                            lipidesCount += a.getQuantiteLipides() * c.getQuantite() / 100;
-                            glucidesCount += a.getQuantiteGlucides() * c.getQuantite() / 100;
-                        }
-                    }
-                    Point p1 = new Point(b.getDateBilan(), caloriesCount);
-                    Point p2 = new Point(b.getDateBilan(), proteinesCount);
-                    Point p3 = new Point(b.getDateBilan(), lipidesCount);
-                    Point p4 = new Point(b.getDateBilan(), glucidesCount);
-                    values.get(0).add(p1);
-                    values.get(1).add(p2);
-                    values.get(2).add(p3);
-                    values.get(3).add(p4);
-            
-                }
-                c = Calendar.getInstance();
-                c.add(Calendar.DAY_OF_MONTH, graphDate);
-                graphe.drawGraph(graphType, c.getTime(), new Date());
-            
-            
+                Point p1 = new Point(b.getDateBilan(), caloriesCount);
+                Point p2 = new Point(b.getDateBilan(), proteinesCount);
+                Point p3 = new Point(b.getDateBilan(), lipidesCount);
+                Point p4 = new Point(b.getDateBilan(), glucidesCount);
+                values.get(0).add(p1);
+                values.get(1).add(p2);
+                values.get(2).add(p3);
+                values.get(3).add(p4);
+
+            }
+            c = Calendar.getInstance();
+            c.add(Calendar.DAY_OF_MONTH, graphDate);
+            graphe.drawGraph(graphType, c.getTime(), new Date());
+
+
         }
         return view;
     }
-    
+
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
     }
-    
+
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
-    
-    
+
+
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
     }

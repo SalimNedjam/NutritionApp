@@ -9,16 +9,16 @@ import java.util.Date;
  */
 
 public abstract class DateUtils {
-    
-    private static SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+
     public static SimpleDateFormat formatterDay = new SimpleDateFormat("d");
-    
+    private static SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+
     public static Date parse(String source) throws ParseException {
         return formatter.parse(source);
     }
-    
+
     public static String stringify(Date date) {
         return formatter.format(date);
     }
-    
+
 }

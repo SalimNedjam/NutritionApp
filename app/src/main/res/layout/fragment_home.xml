@@ -1,161 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background_gradient"
-    android:orientation="vertical">
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_gradient"
+            android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/caviardreams_bold"
-            android:text="Progression"
-            android:textAlignment="center"
-            android:textColor="@color/bg_register"
-            android:textSize="28sp"
-            android:textStyle="bold" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_gravity="start">
-
-
-            <RelativeLayout
-                android:layout_width="300dp"
-                android:layout_height="300dp">
-
-
-                <TextView
-                    android:id="@+id/welcomeMessageTextView"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/caviardreams_bold"
-                    android:gravity="center"
-                    android:layout_centerInParent="true"
-                    android:scaleType="centerCrop"
-                    android:textColor="@color/Dialogs"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
-
-                <ProgressBar
-                    android:id="@+id/circle_progress_bar_back"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="300dp"
-                    android:layout_height="300dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerInParent="true"
-                    android:indeterminate="false"
-                    android:max="100"
-                    android:progressDrawable="@drawable/circle_progress_foreground_home"
-                    android:rotation="-90" />
-
-                <ProgressBar
-                    android:id="@+id/circle_progress_bar"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="300dp"
-                    android:layout_height="300dp"
-                    android:layout_alignParentLeft="true"
-
-                    android:layout_alignParentStart="true"
-                    android:layout_centerInParent="true"
-                    android:indeterminate="false"
-                    android:max="100"
-                    android:progressDrawable="@drawable/circle_progress_foreground_home"
-                    android:rotation="-90" />
-            </RelativeLayout>
-
-
-            <TextView
-                android:id="@+id/progressPercentageTextView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:gravity="start|center_vertical"
-                android:scaleType="centerCrop"
-                android:textColor="@color/blue"
-                android:textSize="30sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_marginBottom="30dp"
-            android:background="@drawable/roundtext3"
-            android:elevation="1dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/conseilTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:fontFamily="roboto"
-                android:padding="10dp"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/Dialogs" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_gravity="end"
-                android:layout_marginLeft="9dp"
-                android:layout_marginStart="9dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/caviardreams"
-                android:padding="10dp"
-                android:text="Conseil du jour"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                tools:text="Conseil du jour" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/root"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/caviardreams_bold"
-
-                android:text="Recommandations journalières"
+                android:text="Progression"
                 android:textAlignment="center"
                 android:textColor="@color/bg_register"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="28sp"
+                android:textStyle="bold"/>
+
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_gravity="start">
+
+
+            <RelativeLayout
+                    android:layout_width="300dp"
+                    android:layout_height="300dp">
+
+
+                <TextView
+                        android:id="@+id/welcomeMessageTextView"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/caviardreams_bold"
+                        android:gravity="center"
+                        android:layout_centerInParent="true"
+                        android:scaleType="centerCrop"
+                        android:textColor="@color/Dialogs"
+                        android:textSize="22sp"
+                        android:textStyle="bold"/>
+
+                <ProgressBar
+                        android:id="@+id/circle_progress_bar_back"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="300dp"
+                        android:layout_height="300dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerInParent="true"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:progressDrawable="@drawable/circle_progress_foreground_home"
+                        android:rotation="-90"/>
+
+                <ProgressBar
+                        android:id="@+id/circle_progress_bar"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="300dp"
+                        android:layout_height="300dp"
+                        android:layout_alignParentLeft="true"
+
+                        android:layout_alignParentStart="true"
+                        android:layout_centerInParent="true"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:progressDrawable="@drawable/circle_progress_foreground_home"
+                        android:rotation="-90"/>
+            </RelativeLayout>
+
+
+            <TextView
+                    android:id="@+id/progressPercentageTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:gravity="start|center_vertical"
+                    android:scaleType="centerCrop"
+                    android:textColor="@color/blue"
+                    android:textSize="30sp"
+                    android:textStyle="bold"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/roundtext3"
+                android:elevation="1dp"
+                android:orientation="vertical">
+
+            <TextView
+                    android:id="@+id/conseilTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="roboto"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"/>
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/Dialogs"/>
+
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_gravity="end"
+                    android:layout_marginLeft="9dp"
+                    android:layout_marginStart="9dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/caviardreams"
+                    android:padding="10dp"
+                    android:text="Conseil du jour"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    tools:text="Conseil du jour"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/root"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="40dp"
+                    android:fontFamily="@font/caviardreams_bold"
+
+                    android:text="Recommandations journalières"
+                    android:textAlignment="center"
+                    android:textColor="@color/bg_register"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
 
 
         </LinearLayout>

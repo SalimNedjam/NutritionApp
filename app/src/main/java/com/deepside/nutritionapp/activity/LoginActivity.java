@@ -15,14 +15,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-
+import android.widget.*;
 import com.deepside.nutritionapp.R;
 import com.deepside.nutritionapp.Utils.Utils;
 import com.facebook.AccessToken;
@@ -42,13 +35,7 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FacebookAuthProvider;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.auth.ProviderQueryResult;
+import com.google.firebase.auth.*;
 
 import java.util.Arrays;
 import java.util.Locale;
@@ -76,7 +63,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private CallbackManager mCallbackManager;
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseUser mCurrentUser;
-    
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,16 +81,16 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             initUI();
             initListner();
             initConnectionUtil();
-            
+
         }
     }
-    
+
     private void initConnectionUtil() {
         mCallbackManager = CallbackManager.Factory.create();
         @SuppressWarnings("deprecation") GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.string.default_web_client_id)).requestScopes(new Scope(Scopes.PLUS_LOGIN)).requestScopes(new Scope(Scopes.PLUS_ME)).requestEmail().build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
     }
-    
+
     private void initUI() {
         mShakeAnimation = AnimationUtils.loadAnimation(LoginActivity.this, R.anim.shake);
         mLoginLayout = findViewById(R.id.login_layout);
@@ -117,7 +104,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         mLoginGoogle = findViewById(R.id.button_google_login);
         mProgressBar = findViewById(R.id.progressBar);
     }
-    
+
     private void initListner() {
         mLoginButton.setOnClickListener(this);
         mForgotPassword.setOnClickListener(this);
@@ -131,10 +118,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 else mPassword.setTransformationMethod(new PasswordTransformationMethod());
             }
         });
-        
+
     }
-    
-    
+
+
     private boolean checkValidation() {
         mGivenEmail = mEmailId.getText().toString().trim();
         mGivenPassword = mPassword.getText().toString().trim();
@@ -150,8 +137,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         }
         return true;
     }
-    
-    
+
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -178,11 +165,11 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 else
                     Snackbar.make(view, "Connection à internet impossible", Snackbar.LENGTH_LONG).show();
                 break;
-            
+
         }
-        
+
     }
-    
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -200,23 +187,23 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                             } catch (ApiException e) {
                                 mLoginLayout.startAnimation(mShakeAnimation);
                                 dismissLoadingDialogShowLayout();
-                                
+
                             }
                         } else {
                             mGoogleSignInClient.signOut();
                             Toast.makeText(LoginActivity.this, R.string.fui_error_user_collision, Toast.LENGTH_LONG).show();
                             dismissLoadingDialogShowLayout();
-                            
+
                         }
                     }
-                    
+
                 }
-                
+
             });
-            
+
         } else mCallbackManager.onActivityResult(requestCode, resultCode, data);
     }
-    
+
     private void handleFacebookAccessToken(AccessToken token) {
         showLoadingDialog();
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
@@ -232,12 +219,12 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                     Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     mLoginLayout.startAnimation(mShakeAnimation);
                     dismissLoadingDialogShowLayout();
-                    
+
                 }
             }
         });
     }
-    
+
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -251,19 +238,19 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                     Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     mLoginLayout.setVisibility(View.VISIBLE);
                     dismissLoadingDialogShowLayout();
-                    
+
                 }
             }
         });
     }
-    
+
     private void loadHome() {
         mIntent = new Intent(LoginActivity.this, MainActivity.class);
         finish();
         startActivity(mIntent);
     }
-    
-    
+
+
     private void signInEmail() {
         if (checkValidation()) {
             showLoadingDialog();
@@ -278,28 +265,28 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                         } else {
                             Toast.makeText(LoginActivity.this, R.string.fui_title_confirm_recover_password, Toast.LENGTH_SHORT).show();
                             FirebaseAuth.getInstance().signOut();
-                            
+
                         }
-                        
+
                     } else {
                         Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         mLoginLayout.startAnimation(mShakeAnimation);
-                        
+
                     }
-                    
+
                 }
-                
+
             });
             dismissLoadingDialogShowLayout();
         }
-        
+
     }
-    
+
     private void signInGoogle() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
-    
+
     private void signInFacebook() {
         LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this, Arrays.asList("email", "public_profile"));
         LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
@@ -308,17 +295,17 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 showLoadingDialog();
                 handleFacebookAccessToken(loginResult.getAccessToken());
             }
-            
+
             @Override
             public void onCancel() {
             }
-            
+
             @Override
             public void onError(FacebookException error) {
             }
         });
     }
-    
+
     private boolean checkGooglePlayServices() {
         @SuppressWarnings("deprecation") final int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
         if (status != ConnectionResult.SUCCESS) {
@@ -333,24 +320,24 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             return true;
         }
     }
-    
+
     private void showLoadingDialog() {
         mProgressBar.setVisibility(View.VISIBLE);
         mLoginLayout.setVisibility(View.GONE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-        
+
     }
-    
+
     private void dismissLoadingDialog() {
         mProgressBar.setVisibility(View.GONE);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-        
+
     }
-    
+
     private void dismissLoadingDialogShowLayout() {
         dismissLoadingDialog();
         mLoginLayout.setVisibility(View.VISIBLE);
-        
+
     }
-    
+
 }

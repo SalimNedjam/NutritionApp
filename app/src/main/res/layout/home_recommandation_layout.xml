@@ -1,68 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingBottom="5dp"
-    android:paddingTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
 
-    android:weightSum="1">
+                android:weightSum="1">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
 
-        android:weightSum="1">
+            android:weightSum="1">
 
         <LinearLayout
-            android:id="@+id/layout_background"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="-20dp"
-            android:layout_marginStart="-20dp"
-            android:alpha="0.6"
-            android:background="@drawable/roundtext2"
-            android:orientation="vertical"
-            android:paddingLeft="50dp"
-            android:paddingStart="50dp">
+                android:id="@+id/layout_background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="-20dp"
+                android:layout_marginStart="-20dp"
+                android:alpha="0.6"
+                android:background="@drawable/roundtext2"
+                android:orientation="vertical"
+                android:paddingLeft="50dp"
+                android:paddingStart="50dp">
 
             <ImageView
-                android:id="@+id/macro_type_image"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="5dp"
-                android:scaleType="centerCrop"
+                    android:id="@+id/macro_type_image"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:scaleType="centerCrop"
 
-                android:src="@drawable/correct" />
+                    android:src="@drawable/correct"/>
 
             <TextView
-                android:id="@+id/macro_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="Protéines"
-                android:fontFamily="@font/caviardreams_bold"
-                android:textColor="#000000"
-                android:textSize="16sp"
- />
+                    android:id="@+id/macro_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Protéines"
+                    android:fontFamily="@font/caviardreams_bold"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+            />
         </LinearLayout>
 
     </LinearLayout>
 
     <TextView
-        android:id="@+id/text_qte"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:fontFamily="@font/caviardreams_bold"
-        android:gravity="end|center_horizontal"
-        android:text="400g"
-        android:textColor="#99000000"
-        android:textSize="24sp" />
+            android:id="@+id/text_qte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:fontFamily="@font/caviardreams_bold"
+            android:gravity="end|center_horizontal"
+            android:text="400g"
+            android:textColor="#99000000"
+            android:textSize="24sp"/>
 
 
 </RelativeLayout>

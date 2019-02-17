@@ -6,10 +6,10 @@ package com.deepside.nutritionapp.Suivi;
 
 public enum Niveau {
     DEBUTANT, INTERMEDIAIRE, AVANCE;
-    
+
     private static Niveau[] values = Niveau.values();
-    
-    
+
+
     public static Niveau get(int index) {
         return values[index];
     }

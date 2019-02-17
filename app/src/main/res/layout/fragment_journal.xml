@@ -1,255 +1,255 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Fragments.JournalFragment">
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".Fragments.JournalFragment">
 
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="330dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
 
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="330dp"
+                android:orientation="vertical">
+
+
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center|start"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/caviardreams_bold"
-                    android:gravity="center"
-                    android:text="Suivi journalier :"
-                    android:textColor="@color/black"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:id="@+id/spinner"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:drawableEnd="@drawable/expand_arrow"
-                    android:drawableRight="@drawable/expand_arrow"
-                    android:fontFamily="@font/caviardreams_bold"
                     android:gravity="center"
-                    android:textColor="@color/black"
+                    android:orientation="horizontal">
 
-                    android:textSize="22sp" />
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center|start"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/caviardreams_bold"
+                        android:gravity="center"
+                        android:text="Suivi journalier :"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"/>
+
+                <TextView
+                        android:id="@+id/spinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:drawableEnd="@drawable/expand_arrow"
+                        android:drawableRight="@drawable/expand_arrow"
+                        android:fontFamily="@font/caviardreams_bold"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+
+                        android:textSize="22sp"/>
 
 
             </LinearLayout>
 
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="0.18">
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.18">
 
 
                 <TextView
-                    android:id="@+id/calorie_cpt"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:scaleType="centerCrop"
-                    android:textColor="@color/red"
-                    android:textSize="16sp"
-                    android:text="0\nKcal"
-                    android:textStyle="bold" />
+                        android:id="@+id/calorie_cpt"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:scaleType="centerCrop"
+                        android:textColor="@color/red"
+                        android:textSize="16sp"
+                        android:text="0\nKcal"
+                        android:textStyle="bold"/>
 
                 <ProgressBar
-                    android:id="@+id/circle_progress_bar_calorie_back"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:layout_centerInParent="true"
-                    android:indeterminate="false"
-                    android:max="100"
-                    android:progressDrawable="@drawable/circle_progress_foreground"
-                    android:rotation="-90" />
+                        android:id="@+id/circle_progress_bar_calorie_back"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_centerInParent="true"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:progressDrawable="@drawable/circle_progress_foreground"
+                        android:rotation="-90"/>
 
                 <ProgressBar
-                    android:id="@+id/circle_progress_bar_calorie"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:layout_centerInParent="true"
-                    android:indeterminate="false"
-                    android:max="100"
-                    android:progressDrawable="@drawable/circle_progress_foreground"
-                    android:rotation="-90" />
+                        android:id="@+id/circle_progress_bar_calorie"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_centerInParent="true"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:progressDrawable="@drawable/circle_progress_foreground"
+                        android:rotation="-90"/>
 
 
             </RelativeLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.3"
-                android:baselineAligned="false"
-                android:gravity="center"
-                android:orientation="horizontal">
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.3"
+                    android:baselineAligned="false"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
                 <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    tools:ignore="NestedWeights">
-
-                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/circle_progress_bar_proteine"
-                        android:layout_centerHorizontal="true"
-                        android:padding="10dp"
-                        android:text="Protéines"
-                        android:textStyle="bold" />
+                        android:layout_weight="1"
+                        tools:ignore="NestedWeights">
 
                     <TextView
-                        android:id="@+id/prot_cpt"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:scaleType="centerCrop"
-                        android:textColor="@color/blue"
-                        android:textSize="16sp"
-                        android:text="0\ng"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/circle_progress_bar_proteine"
+                            android:layout_centerHorizontal="true"
+                            android:padding="10dp"
+                            android:text="Protéines"
+                            android:textStyle="bold"/>
 
-                        android:textStyle="bold" />
+                    <TextView
+                            android:id="@+id/prot_cpt"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:scaleType="centerCrop"
+                            android:textColor="@color/blue"
+                            android:textSize="16sp"
+                            android:text="0\ng"
 
-                    <ProgressBar
-                        android:id="@+id/circle_progress_bar_proteine_back"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
-                        android:layout_centerInParent="true"
-                        android:indeterminate="false"
-                        android:max="100"
-                        android:progressDrawable="@drawable/circle_progress_foreground"
-                        android:rotation="-90" />
+                            android:textStyle="bold"/>
 
                     <ProgressBar
-                        android:id="@+id/circle_progress_bar_proteine"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
-                        android:layout_centerInParent="true"
-                        android:indeterminate="false"
-                        android:max="100"
-                        android:progressDrawable="@drawable/circle_progress_foreground"
-                        android:rotation="-90" />
+                            android:id="@+id/circle_progress_bar_proteine_back"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:layout_centerInParent="true"
+                            android:indeterminate="false"
+                            android:max="100"
+                            android:progressDrawable="@drawable/circle_progress_foreground"
+                            android:rotation="-90"/>
+
+                    <ProgressBar
+                            android:id="@+id/circle_progress_bar_proteine"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:layout_centerInParent="true"
+                            android:indeterminate="false"
+                            android:max="100"
+                            android:progressDrawable="@drawable/circle_progress_foreground"
+                            android:rotation="-90"/>
 
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-
-                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/circle_progress_bar"
-                        android:layout_centerHorizontal="true"
-                        android:padding="10dp"
-
-                        android:text="Lipides"
-                        android:textStyle="bold" />
+                        android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/fat_cpt"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:scaleType="centerCrop"
-                        android:textColor="@color/green"
-                        android:text="0\ng"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/circle_progress_bar"
+                            android:layout_centerHorizontal="true"
+                            android:padding="10dp"
 
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                            android:text="Lipides"
+                            android:textStyle="bold"/>
+
+                    <TextView
+                            android:id="@+id/fat_cpt"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:scaleType="centerCrop"
+                            android:textColor="@color/green"
+                            android:text="0\ng"
+
+                            android:textSize="16sp"
+                            android:textStyle="bold"/>
 
                     <ProgressBar
-                        android:id="@+id/circle_progress_bar_back"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
-                        android:layout_centerInParent="true"
-                        android:indeterminate="false"
-                        android:max="100"
-                        android:progressDrawable="@drawable/circle_progress_foreground"
-                        android:rotation="-90" />
+                            android:id="@+id/circle_progress_bar_back"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:layout_centerInParent="true"
+                            android:indeterminate="false"
+                            android:max="100"
+                            android:progressDrawable="@drawable/circle_progress_foreground"
+                            android:rotation="-90"/>
 
                     <ProgressBar
-                        android:id="@+id/circle_progress_bar"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
-                        android:layout_centerInParent="true"
-                        android:indeterminate="false"
-                        android:max="100"
-                        android:progressDrawable="@drawable/circle_progress_foreground"
-                        android:rotation="-90" />
+                            android:id="@+id/circle_progress_bar"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:layout_centerInParent="true"
+                            android:indeterminate="false"
+                            android:max="100"
+                            android:progressDrawable="@drawable/circle_progress_foreground"
+                            android:rotation="-90"/>
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-
-                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/circle_progress_bar_carbs"
-                        android:layout_centerHorizontal="true"
-
-                        android:padding="10dp"
-                        android:text="Glucides"
-                        android:textStyle="bold" />
+                        android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/carb_cpt"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:scaleType="centerCrop"
-                        android:text="0\ng"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/circle_progress_bar_carbs"
+                            android:layout_centerHorizontal="true"
 
-                        android:textColor="@color/yello"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                            android:padding="10dp"
+                            android:text="Glucides"
+                            android:textStyle="bold"/>
+
+                    <TextView
+                            android:id="@+id/carb_cpt"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:scaleType="centerCrop"
+                            android:text="0\ng"
+
+                            android:textColor="@color/yello"
+                            android:textSize="16sp"
+                            android:textStyle="bold"/>
 
                     <ProgressBar
-                        android:id="@+id/circle_progress_bar_carbs_back"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
-                        android:layout_centerInParent="true"
-                        android:indeterminate="false"
-                        android:max="100"
-                        android:progressDrawable="@drawable/circle_progress_foreground"
-                        android:rotation="-90" />
+                            android:id="@+id/circle_progress_bar_carbs_back"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:layout_centerInParent="true"
+                            android:indeterminate="false"
+                            android:max="100"
+                            android:progressDrawable="@drawable/circle_progress_foreground"
+                            android:rotation="-90"/>
 
                     <ProgressBar
-                        android:id="@+id/circle_progress_bar_carbs"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
-                        android:layout_centerInParent="true"
-                        android:indeterminate="false"
-                        android:max="100"
-                        android:progressDrawable="@drawable/circle_progress_foreground"
-                        android:rotation="-90" />
+                            android:id="@+id/circle_progress_bar_carbs"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:layout_centerInParent="true"
+                            android:indeterminate="false"
+                            android:max="100"
+                            android:progressDrawable="@drawable/circle_progress_foreground"
+                            android:rotation="-90"/>
 
                 </RelativeLayout>
 
@@ -260,10 +260,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/root"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+                android:id="@+id/root"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
         </LinearLayout>
 

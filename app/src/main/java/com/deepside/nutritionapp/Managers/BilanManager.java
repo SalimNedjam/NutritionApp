@@ -15,12 +15,12 @@ import java.util.Date;
 
 
 public class BilanManager extends DatabaseManager {
-    
-    
+
+
     public BilanManager() {
         TABLE_NAME = "Bilan";
     }
-    
+
     public void insert(Bilan b) {
         DatabaseReference ref = db.child(b.getIdUtilisateur());
         DatabaseReference ref2 = ref.child(String.valueOf(DateUtils.stringify(b.getDateBilan())));
@@ -28,15 +28,15 @@ public class BilanManager extends DatabaseManager {
             ref2.child(String.valueOf(c.getRepas().ordinal())).child(String.valueOf(c.getIdAliment())).setValue(c.getQuantite());
         }
     }
-    
+
     public void insert(String idUtilisateur, Date d, Consommation c) {
         db.child(idUtilisateur).child(String.valueOf(DateUtils.stringify(d))).child(String.valueOf(c.getRepas().ordinal())).child(String.valueOf(c.getIdAliment())).setValue(c.getQuantite());
     }
-    
+
     public DatabaseReference prepare(String idUtilisateur, Date d) {
         return db.child(idUtilisateur).child(String.valueOf(DateUtils.stringify(d)));
     }
-    
+
     public Bilan get(DataSnapshot dataSnapshot) {
         Bilan b = new Bilan();
         b.setIdUtilisateur(dataSnapshot.getRef().getParent().getKey());
@@ -48,16 +48,16 @@ public class BilanManager extends DatabaseManager {
         for (DataSnapshot ref2 : dataSnapshot.getChildren()) {
             for (DataSnapshot ref3 : ref2.getChildren()) {
                 b.getConsommations().add(new Consommation(Long.parseLong(ref3.getKey()), Repas.get(Integer.parseInt(ref2.getKey())), Float.parseFloat(ref3.getValue().toString())));
-                
+
             }
         }
         return b;
     }
-    
+
     public DatabaseReference prepare(String idUtilisateur) {
         return db.child(idUtilisateur);
     }
-    
+
     public ArrayList<Bilan> getAll(DataSnapshot dataSnapshot) {
         ArrayList<Bilan> list = new ArrayList<>();
         for (DataSnapshot data : dataSnapshot.getChildren()) {
@@ -71,7 +71,7 @@ public class BilanManager extends DatabaseManager {
             for (DataSnapshot ref2 : data.getChildren()) {
                 for (DataSnapshot ref3 : ref2.getChildren()) {
                     b.getConsommations().add(new Consommation(Long.parseLong(ref3.getKey()), Repas.get(Integer.parseInt(ref2.getKey())), Float.parseFloat(ref3.getValue().toString())));
-                    
+
                 }
             }
             list.add(b);
@@ -84,7 +84,7 @@ public class BilanManager extends DatabaseManager {
         });
         return list;
     }
-    
+
     public void delete(String idUtilisateur, Date d) {
         DatabaseReference ref = db.child(idUtilisateur);
         if (ref != null) {
@@ -92,7 +92,7 @@ public class BilanManager extends DatabaseManager {
             ref2.removeValue();
         }
     }
-    
+
     public void delete(String idUtilisateur, Date d, Repas r, long idAliment) {
         DatabaseReference ref = db.child(idUtilisateur);
         if (ref != null) {
@@ -100,5 +100,5 @@ public class BilanManager extends DatabaseManager {
             ref2.removeValue();
         }
     }
-    
+
 }

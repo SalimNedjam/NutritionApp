@@ -1,55 +1,99 @@
 {
-"project_info": {
-"project_number": "570832667517",
-"firebase_url": "https://pfe2018-242a5.firebaseio.com",
-"project_id": "pfe2018-242a5",
-"storage_bucket": "pfe2018-242a5.appspot.com"
-},
-"client": [
-{
-"client_info": {
-"mobilesdk_app_id": "1:570832667517:android:f72f61aea0496995",
-"android_client_info": {
-"package_name": "com.deepside.nutritionapp"
-}
-},
-"oauth_client": [
-{
-"client_id": "570832667517-fbldkbd4545ogmgrqgpcsq6q4k7oeur1.apps.googleusercontent.com",
-"client_type": 1,
-"android_info": {
-"package_name": "com.deepside.nutritionapp",
-"certificate_hash": "ac31ec66941ea87f02968a3ba3ad40d1203e5f03"
-}
-},
-{
-"client_id": "570832667517-rsm8s0d500tih2g5e8n3c6dc5nscd7p0.apps.googleusercontent.com",
-"client_type": 3
-}
-],
-"api_key": [
-{
-"current_key": "AIzaSyAlXn3yh8pwH1GrpZEzplMFIVz1qdiZuq4"
-}
-],
-"services": {
-"analytics_service": {
-"status": 1
-},
-"appinvite_service": {
-"status": 2,
-"other_platform_oauth_client": [
-{
-"client_id": "570832667517-rsm8s0d500tih2g5e8n3c6dc5nscd7p0.apps.googleusercontent.com",
-"client_type": 3
-}
-]
-},
-"ads_service": {
-"status": 2
-}
-}
-}
-],
-"configuration_version": "1"
+  "project_info": {
+    "project_number": "675181104895",
+    "firebase_url": "https://blsrdv.firebaseio.com",
+    "project_id": "blsrdv",
+    "storage_bucket": "blsrdv.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:675181104895:android:14a2c921330a80b0",
+        "android_client_info": {
+          "package_name": "com.deepside.nutritionapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "675181104895-kjonifrhqm5q00abb86acgh6rc2l85bo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.deepside.nutritionapp",
+            "certificate_hash": "e502dfdbf5ac33df6f707697e560dff5010eab4c"
+          }
+        },
+        {
+          "client_id": "675181104895-sil8dukiitp49rub0kc8gefto0our7ne.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDo9qJA5vpCD2gUAFBqp8Z3RtwoQ6vy94"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "675181104895-sil8dukiitp49rub0kc8gefto0our7ne.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:675181104895:android:6a78374d5aad0929",
+        "android_client_info": {
+          "package_name": "com.example.macos.blsrdv"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "675181104895-s3f44j2l7aa7vkpgcm1ik75b33n5nhd1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.macos.blsrdv",
+            "certificate_hash": "e502dfdbf5ac33df6f707697e560dff5010eab4c"
+          }
+        },
+        {
+          "client_id": "675181104895-sil8dukiitp49rub0kc8gefto0our7ne.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDo9qJA5vpCD2gUAFBqp8Z3RtwoQ6vy94"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "675181104895-sil8dukiitp49rub0kc8gefto0our7ne.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
 }

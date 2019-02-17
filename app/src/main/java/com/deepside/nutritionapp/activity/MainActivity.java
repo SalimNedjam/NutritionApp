@@ -25,14 +25,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.deepside.nutritionapp.Fragments.HomeFragment;
-import com.deepside.nutritionapp.Fragments.JournalFragment;
-import com.deepside.nutritionapp.Fragments.ProfileFragment;
-import com.deepside.nutritionapp.Fragments.RecommandéFragment;
-import com.deepside.nutritionapp.Fragments.StatistiqueFragment;
+import com.deepside.nutritionapp.Fragments.*;
 import com.deepside.nutritionapp.Managers.UtilisateurManager;
 import com.deepside.nutritionapp.R;
 import com.deepside.nutritionapp.Suivi.Utilisateur;
@@ -61,7 +56,7 @@ import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity {
-    
+
     private static final String TAG_HOME = "HOME";
     private static final String TAG_JOURNAL = "JOURNAL";
     private static final String TAG_STATISTIQUES = "STATISTIQUES";
@@ -69,8 +64,12 @@ public class MainActivity extends AppCompatActivity {
     private static String CURRENT_TAG = TAG_HOME;
     private static int mNavIndex = 3;
     Uri filePath;
-    private UtilisateurManager mUtilisateurManager;
     StorageReference reference;
+    byte[] data;
+    ImageView imgProfile;
+    NavigationView navigationView;
+    View navHeader;
+    private UtilisateurManager mUtilisateurManager;
     private Bundle bundle = new Bundle();
     private NavigationView mNavigationView;
     private boolean journal = true;
@@ -80,15 +79,11 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton fab;
     private String[] activityTitles;
     private FirebaseAuth mAuth;
-    byte[] data;
-    ImageView imgProfile;
-    NavigationView navigationView;
-    View navHeader;
     private GoogleSignInClient mGoogleSignInClient;
     private Handler mHandler;
     private Utilisateur user;
     private LinearLayout mProgressBar;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,14 +105,14 @@ public class MainActivity extends AppCompatActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         initUI();
         setUpNavigationView();
-         navigationView = (NavigationView) findViewById(R.id.nav_view);
-         navHeader = navigationView.getHeaderView(0);
-    
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navHeader = navigationView.getHeaderView(0);
-         imgProfile = (ImageView) navHeader.findViewById(R.id.img_profile);
-        Utils.imgProfile=imgProfile;
-    
+
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navHeader = navigationView.getHeaderView(0);
+        imgProfile = (ImageView) navHeader.findViewById(R.id.img_profile);
+        Utils.imgProfile = imgProfile;
+
         showLoadingDialog();
         findViewById(R.id.textWaiter).postDelayed(new Runnable() {
             @Override
@@ -131,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                 ((TextView) findViewById(R.id.textWaiter)).setText("\n\nOrganisation des données.\nVeuillez patienter...");
             }
         }, 10000);
-        
+
         fab = findViewById(R.id.fab);
         getUserFromDb();
         if (savedInstanceState == null) {
@@ -144,11 +139,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 journal = !journal;
                 loadFragment();
-                
+
             }
         });
     }
-    
+
     private void getUserFromDb() {
         mUtilisateurManager = new UtilisateurManager();
         mUtilisateurManager.open();
@@ -167,28 +162,28 @@ public class MainActivity extends AppCompatActivity {
                         mNavIndex = 3;
                         CURRENT_TAG = TAG_PROFILE;
                         uploadImage();
-    
-                        
+
+
                     }
                     StorageReference ref = FirebaseStorage.getInstance().getReference().child("images/" + mAuth.getCurrentUser().getUid());
-                    Glide.with(getApplicationContext()).using(new FirebaseImageLoader()).load(ref).crossFade().thumbnail(0.5f).bitmapTransform(new CircleTransform(getApplicationContext())).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache( true ).into(imgProfile);
+                    Glide.with(getApplicationContext()).using(new FirebaseImageLoader()).load(ref).crossFade().thumbnail(0.5f).bitmapTransform(new CircleTransform(getApplicationContext())).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).into(imgProfile);
                     loadNavHeader();
                     loadFragment();
                     dismissLoadingDialog();
-                    Utils.sDataSnapshot=dataSnapshot;
+                    Utils.sDataSnapshot = dataSnapshot;
                 }
-                
+
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
                     loadFragment();
                     dismissLoadingDialog();
-                    
+
                 }
             });
         }
     }
-    
-    
+
+
     private void initUI() {
         drawer = findViewById(R.id.drawer_layout);
         mProgressBar = findViewById(R.id.progressBar);
@@ -198,17 +193,17 @@ public class MainActivity extends AppCompatActivity {
         mEmail = navHeader.findViewById(R.id.website);
         mProgressBar = findViewById(R.id.progressBarMain);
         activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
-        
+
     }
-    
-    
+
+
     private void loadNavHeader() {
         mName.setText(user.getUsername());
         mEmail.setText(mAuth.getCurrentUser().getEmail());
-      
+
     }
-    
-    
+
+
     private void loadFragment() {
         if ((user.getNiveau() == null && mNavIndex == 3) || user.getNiveau() != null) {
             selectNavMenu();
@@ -234,9 +229,9 @@ public class MainActivity extends AppCompatActivity {
             toggleFab();
             invalidateOptionsMenu();
         }
-        
+
     }
-    
+
     private Fragment getFragment() {
         switch (mNavIndex) {
             case 0:
@@ -270,19 +265,19 @@ public class MainActivity extends AppCompatActivity {
                 return new HomeFragment();
         }
     }
-    
+
     private void setToolbarTitle() {
         getSupportActionBar().setTitle(activityTitles[mNavIndex]);
-        
+
     }
-    
+
     private void selectNavMenu() {
         mNavigationView.getMenu().getItem(mNavIndex).setChecked(true);
     }
-    
+
     private void setUpNavigationView() {
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            
+
             // This method will trigger on item Click of navigation menu
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -311,7 +306,7 @@ public class MainActivity extends AppCompatActivity {
                         mNavIndex = 0;
                         CURRENT_TAG = TAG_HOME;
                         break;
-                    
+
                 }
                 //Checking if the item is in checked state or not, if not make it in checked state
                 if (menuItem.isChecked()) {
@@ -325,13 +320,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.openDrawer, R.string.closeDrawer) {
-    
+
         };
         //noinspection deprecation
         drawer.setDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
     }
-    
+
     @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -346,23 +341,23 @@ public class MainActivity extends AppCompatActivity {
                 loadFragment();
                 return;
             }
-            
+
         }
         super.onBackPressed();
     }
-    
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if (mNavIndex == 0) {
             getMenuInflater().inflate(R.menu.main, menu);
-            
+
         }
         if (mNavIndex == 3) {
             getMenuInflater().inflate(R.menu.profile, menu);
         }
         return true;
     }
-    
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -372,7 +367,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    
+
     private void signOut() {
         //mLoginManager.logOut();
         mGoogleSignInClient.signOut();
@@ -381,28 +376,28 @@ public class MainActivity extends AppCompatActivity {
         finish();
         drawer.closeDrawers();
     }
-    
+
     private void toggleFab() {
         if (mNavIndex == 1) fab.show();
         else fab.hide();
     }
-    
+
     private void showLoadingDialog() {
         mProgressBar.setVisibility(View.VISIBLE);
         toolbar.setVisibility(View.GONE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-        
+
     }
-    
+
     private void dismissLoadingDialog() {
         mProgressBar.setVisibility(View.GONE);
         toolbar.setVisibility(View.VISIBLE);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-        
+
     }
-    
+
     private void uploadImage() {
-        
+
         imgProfile.setDrawingCacheEnabled(true);
         imgProfile.buildDrawingCache();
         Bitmap bitmap = ((BitmapDrawable) imgProfile.getDrawable()).getBitmap();
@@ -423,21 +418,17 @@ public class MainActivity extends AppCompatActivity {
                 // ...
             }
         });
-        
-        
-        
-            
-        }
-    
-    
+
+
+    }
+
+
     private byte[] bitmapToByte(Bitmap bitmap) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
         byte[] byteArray = stream.toByteArray();
         return byteArray;
     }
-    
-    
-    
-    
+
+
 }

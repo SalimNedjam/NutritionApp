@@ -7,11 +7,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 public class AlimentsFavorisManager extends DatabaseManager {
-    
+
     public AlimentsFavorisManager() {
         TABLE_NAME = "AlimentsFavoris";
     }
-    
+
     public void insert(String idUtilisateur, long idAliment) {
         final DatabaseReference ref = db.child(idUtilisateur).child(String.valueOf(idAliment));
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -23,18 +23,18 @@ public class AlimentsFavorisManager extends DatabaseManager {
                     dataSnapshot.getRef().setValue(1);
                 }
             }
-            
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         });
-        
+
     }
-    
+
     public DatabaseReference prepare(String idUtilisateur) {
         return db.child(idUtilisateur);
     }
-    
+
     public AlimentsFavoris get(DataSnapshot dataSnapshot) {
         AlimentsFavoris a = new AlimentsFavoris();
         a.setIdUtilisateur(dataSnapshot.getKey());
@@ -43,7 +43,7 @@ public class AlimentsFavorisManager extends DatabaseManager {
         }
         return a;
     }
-    
+
     public void delete(String idUtilisateur, long idAliment) {
         DatabaseReference ref = db.child(idUtilisateur);
         if (ref != null) {
@@ -51,5 +51,5 @@ public class AlimentsFavorisManager extends DatabaseManager {
             ref2.removeValue();
         }
     }
-    
+
 }

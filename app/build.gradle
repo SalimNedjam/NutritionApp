@@ -31,28 +31,28 @@ android {
 }
 
 dependencies {
-    compile 'com.google.firebase:firebase-storage:11.8.0'
-    compile 'com.google.firebase:firebase-database:11.8.0'
-    compile 'com.google.android.gms:play-services-vision:11.8.0'
-    compile 'com.firebaseui:firebase-ui-storage:0.6.0'
-    compile 'com.google.firebase:firebase-auth:11.8.0'
-    compile 'com.google.android.gms:play-services-auth:11.8.0'
-    compile 'com.facebook.android:facebook-android-sdk:4.27.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'co.infinum:materialdatetimepicker-support:3.5.1'
+    implementation 'com.google.firebase:firebase-storage:11.8.0'
+    implementation 'com.google.firebase:firebase-database:11.8.0'
+    implementation 'com.google.android.gms:play-services-vision:11.8.0'
+    implementation 'com.firebaseui:firebase-ui-storage:0.6.0'
+    implementation 'com.google.firebase:firebase-auth:11.8.0'
+    implementation 'com.google.android.gms:play-services-auth:11.8.0'
+    implementation 'com.facebook.android:facebook-android-sdk:4.27.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'co.infinum:materialdatetimepicker-support:3.5.1'
 
 
 
-    compile 'com.shawnlin:number-picker:2.4.5'
+    implementation 'com.shawnlin:number-picker:2.4.5'
     implementation 'info.androidhive:barcode-reader:1.1.5'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    testCompile 'junit:junit:4.12'
-    compile 'com.jaredrummler:material-spinner:1.2.5'
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.jaredrummler:material-spinner:1.2.5'
 
 
 }

@@ -9,12 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
+import android.widget.*;
 import com.deepside.nutritionapp.Managers.ConseilManager;
 import com.deepside.nutritionapp.Managers.UtilisateurManager;
 import com.deepside.nutritionapp.R;
@@ -25,11 +20,7 @@ import com.deepside.nutritionapp.Utils.DateUtils;
 import com.deepside.nutritionapp.Utils.Utils;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.*;
 
 import java.util.Date;
 
@@ -44,11 +35,11 @@ public class HomeFragment extends Fragment {
     private Conseil c;
     private Utilisateur u;
     private OnFragmentInteractionListener mListener;
-    
+
     public HomeFragment() {
     }
-    
-    
+
+
     public static HomeFragment newInstance(String param1, String param2) {
         HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
@@ -57,8 +48,8 @@ public class HomeFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-    
-    
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +58,7 @@ public class HomeFragment extends Fragment {
             String param2 = getArguments().getString(ARG_PARAM2);
         }
     }
-    
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
@@ -117,31 +108,30 @@ public class HomeFragment extends Fragment {
             cm.open();
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
             if (ref != null) {
-                if (Utils.sDataSnapshot!=null)
-                {
-                    
+                if (Utils.sDataSnapshot != null) {
+
                     DataSnapshot dateDerniereConnexionRef = Utils.sDataSnapshot.child("Utilisateur").child(user.getUid()).child("dateDerniereConnexion");
                     DataSnapshot idDernierConseilRef = Utils.sDataSnapshot.child("Utilisateur").child(user.getUid()).child("idDernierConseil");
-    
-                    if(dateDerniereConnexionRef.exists() && idDernierConseilRef.exists()){
-        
+
+                    if (dateDerniereConnexionRef.exists() && idDernierConseilRef.exists()) {
+
                         String dateDerniereConnexion = dateDerniereConnexionRef.getValue().toString();
                         String idDernierConseil = idDernierConseilRef.getValue().toString();
-        
-                        if(!dateDerniereConnexion.equals(DateUtils.stringify(new Date()))){
+
+                        if (!dateDerniereConnexion.equals(DateUtils.stringify(new Date()))) {
                             c = cm.getRandom(Utils.sDataSnapshot.child("Conseil"));
                             if (c != null) {
                                 conseilTextView.setText(c.getDescription());
                                 dateDerniereConnexionRef.getRef().setValue(DateUtils.stringify(new Date()));
                                 idDernierConseilRef.getRef().setValue(c.getIdConseil());
                             }
-                        }else{
+                        } else {
                             c = cm.get(Utils.sDataSnapshot.child("Conseil").child(idDernierConseil));
                             if (c != null) {
                                 conseilTextView.setText(c.getDescription());
                             }
                         }
-                    }else{
+                    } else {
                         c = cm.getRandom(Utils.sDataSnapshot.child("Conseil"));
                         if (c != null) {
                             conseilTextView.setText(c.getDescription());
@@ -150,15 +140,13 @@ public class HomeFragment extends Fragment {
                         }
                     }
                     Utils.dumpDatasnapshot();
-                }
-                else
-                {
+                } else {
                     ref.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            Utils.sDataSnapshot=dataSnapshot;
+                            Utils.sDataSnapshot = dataSnapshot;
                         }
-        
+
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
                         }
@@ -169,26 +157,26 @@ public class HomeFragment extends Fragment {
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             DataSnapshot dateDerniereConnexionRef = dataSnapshot.child("dateDerniereConnexion");
                             DataSnapshot idDernierConseilRef = dataSnapshot.child("idDernierConseil");
-    
-                            if(dateDerniereConnexionRef.exists() && idDernierConseilRef.exists()){
-        
+
+                            if (dateDerniereConnexionRef.exists() && idDernierConseilRef.exists()) {
+
                                 String dateDerniereConnexion = dateDerniereConnexionRef.getValue().toString();
                                 String idDernierConseil = idDernierConseilRef.getValue().toString();
-        
-                                if(!dateDerniereConnexion.equals(DateUtils.stringify(new Date()))){
+
+                                if (!dateDerniereConnexion.equals(DateUtils.stringify(new Date()))) {
                                     c = cm.getRandom(dataSnapshot.child("Conseil"));
                                     if (c != null) {
                                         conseilTextView.setText(c.getDescription());
                                         dateDerniereConnexionRef.getRef().setValue(DateUtils.stringify(new Date()));
                                         idDernierConseilRef.getRef().setValue(c.getIdConseil());
                                     }
-                                }else{
+                                } else {
                                     c = cm.get(dataSnapshot.child("Conseil").child(idDernierConseil));
                                     if (c != null) {
                                         conseilTextView.setText(c.getDescription());
                                     }
                                 }
-                            }else{
+                            } else {
                                 c = cm.getRandom(dataSnapshot.child("Conseil"));
                                 if (c != null) {
                                     conseilTextView.setText(c.getDescription());
@@ -197,33 +185,33 @@ public class HomeFragment extends Fragment {
                                 }
                             }
                         }
-    
+
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
                         }
                     });
-                   
+
                 }
-                
+
             }
         }
         return view;
     }
-    
+
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
     }
-    
+
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
-    
-    
+
+
     private GradientDrawable CreateGradient(int color) {
         LayerDrawable layerDrawable;
         GradientDrawable gradientDrawable;
@@ -232,7 +220,7 @@ public class HomeFragment extends Fragment {
         gradientDrawable.setColor(getResources().getColor(color));
         return gradientDrawable;
     }
-    
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated

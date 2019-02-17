@@ -15,27 +15,11 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.SimpleAdapter;
-import android.widget.Spinner;
-import android.widget.TextView;
-
+import android.widget.*;
 import com.deepside.nutritionapp.Managers.AlimentManager;
 import com.deepside.nutritionapp.Managers.BilanManager;
 import com.deepside.nutritionapp.R;
-import com.deepside.nutritionapp.Suivi.Aliment;
-import com.deepside.nutritionapp.Suivi.Bilan;
-import com.deepside.nutritionapp.Suivi.Consommation;
-import com.deepside.nutritionapp.Suivi.Regime;
-import com.deepside.nutritionapp.Suivi.Repas;
-import com.deepside.nutritionapp.Suivi.Utilisateur;
+import com.deepside.nutritionapp.Suivi.*;
 import com.deepside.nutritionapp.Utils.DateUtils;
 import com.deepside.nutritionapp.Utils.Utils;
 import com.deepside.nutritionapp.activity.RechercheAlimentActivity;
@@ -47,12 +31,7 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
@@ -82,11 +61,11 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
     private OnFragmentInteractionListener mListener;
     private ArrayList<Bilan> bilans;
     private HashMap<Long, Aliment> alimentsSet;
-    
+
     public JournalFragment() {
     }
-    
-    
+
+
     public static JournalFragment newInstance(String param1, String param2) {
         JournalFragment fragment = new JournalFragment();
         Bundle args = new Bundle();
@@ -95,7 +74,7 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
         fragment.setArguments(args);
         return fragment;
     }
-    
+
     private static void setListViewHeightBasedOnItems(ListView listView) {
         ListAdapter listAdapter = listView.getAdapter();
         if (listAdapter != null) {
@@ -113,11 +92,11 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
             params.height = totalItemsHeight + totalDividersHeight + totalPadding;
             listView.setLayoutParams(params);
             listView.requestLayout();
-            
+
         }
-        
+
     }
-    
+
     @Override
     public void onResume() {
         try {
@@ -128,13 +107,11 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
             e.printStackTrace();
         }
         dumpConsomation(selectedDate);
-        
-        if (Utils.c!=null)
-        {
-            alimentsSet.put(Utils.a.getIdAliment(),Utils.a);
+
+        if (Utils.c != null) {
+            alimentsSet.put(Utils.a.getIdAliment(), Utils.a);
             for (Bilan b : bilans) {
-                if (DateUtils.stringify(b.getDateBilan()).equals(DateUtils.stringify(Utils.d)))
-                {
+                if (DateUtils.stringify(b.getDateBilan()).equals(DateUtils.stringify(Utils.d))) {
                     switch (Utils.c.getRepas().ordinal()) {
                         case 0:
                             mAlimentListBreakfast.add(Utils.c);
@@ -154,9 +131,9 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
                         case 5:
                             mAlimentListSnack3.add(Utils.c);
                             break;
-        
+
                     }
-            
+
                 }
             }
             updateList(mAlimentListBreakfast, mListViewBreakfast);
@@ -172,11 +149,11 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
             setListViewHeightBasedOnItems(mListViewSnack2);
             setListViewHeightBasedOnItems(mListViewDinner);
             setListViewHeightBasedOnItems(mListViewSnack3);
-            Utils.c=null;
+            Utils.c = null;
         }
         super.onResume();
     }
-    
+
     @Override
     public void onStart() {
         try {
@@ -189,8 +166,8 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
         dumpConsomation(selectedDate);
         super.onStart();
     }
-    
-    
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -218,10 +195,10 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
         mCalorieNeeded = regime.getCaloriesRecommandees();
         mFatNeeded = regime.getLipidesRecommandees();
         mCarbsNeeded = regime.getGlucidesRecommandees();
-    
-    
+
+
     }
-    
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mInflater = inflater;
@@ -250,19 +227,19 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
         dateSpinner.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 datePickerDialog.show(getFragmentManager(), "");
-                
+
             }
         });
         new Thread(new Runnable() {
             public void run() {
                 InitProgress(mView);
-                
+
             }
         }).start();
         initRepasView();
         return mView;
     }
-    
+
     private void initRepasView() {
         LinearLayout main_layout = mView.findViewById(R.id.root);
         mViewBreakfast = (LinearLayout) mInflater.inflate(R.layout.repas_layout, null);
@@ -315,56 +292,56 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
         mViewDinner.findViewById(R.id.add_aliment_repas).setOnClickListener(addButtonListner);
         mViewSnack3.findViewById(R.id.add_aliment_repas).setOnClickListener(addButtonListner);
         mListViewBreakfast.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            
+
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 ShowPopup(mView, i, 0);
             }
         });
         mListViewSnack1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            
+
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 ShowPopup(mView, i, 1);
             }
         });
         mListViewLunch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            
+
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 ShowPopup(mView, i, 2);
             }
         });
         mListViewSnack2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            
+
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 ShowPopup(mView, i, 3);
             }
         });
         mListViewDinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            
+
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 ShowPopup(mView, i, 4);
             }
         });
         mListViewSnack3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            
+
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 ShowPopup(mView, i, 5);
             }
         });
         dateSpinner.setVisibility(View.GONE);
-        
+
     }
+
     private void SetConsomation(final Date date) {
         for (Object arrayList : mAlimentDayArray)
             ((ArrayList) arrayList).clear();
         for (Bilan b : bilans) {
-            if (DateUtils.stringify(b.getDateBilan()).equals(DateUtils.stringify(date)))
-            {
+            if (DateUtils.stringify(b.getDateBilan()).equals(DateUtils.stringify(date))) {
                 Bilan jourBilan = b;
                 for (Consommation c : b.getConsommations()) {
                     Consommation consommation = new Consommation(c.getIdAliment(), c.getRepas(), c.getQuantite());
@@ -387,10 +364,10 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
                         case 5:
                             mAlimentListSnack3.add(consommation);
                             break;
-            
+
                     }
                 }
-    
+
             }
         }
         updateList(mAlimentListBreakfast, mListViewBreakfast);
@@ -407,10 +384,8 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
         setListViewHeightBasedOnItems(mListViewDinner);
         setListViewHeightBasedOnItems(mListViewSnack3);
     }
-        
-        
-        
-    
+
+
     private void dumpConsomation(final Date date) {
         ArrayList<Long> idAlimentsSet = new ArrayList<>();
         alimentsSet = new HashMap<>();
@@ -418,7 +393,7 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
             ((ArrayList) arrayList).clear();
         BilanManager bm = new BilanManager();
         AlimentManager am = new AlimentManager();
-    
+
         bilans = bm.getAll(Utils.sDataSnapshot.child("Bilan").child(user.getIdUtilisateur()));
         Calendar date1;
         System.out.println(bilans);
@@ -432,7 +407,7 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
         }
         if (!listDate.isEmpty()) {
             datePickerDialog.setHighlightedDays((listDate.toArray(new Calendar[listDate.size()])));
-        
+
         }
         for (Long l : idAlimentsSet) {
             if (Utils.sDataSnapshot.child("Aliment").child(String.valueOf(l)).exists()) {
@@ -442,9 +417,9 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
         }
         SetConsomation(date);
         dateSpinner.setVisibility(View.VISIBLE);
-        
+
     }
-    
+
     private void updateList(ArrayList<Consommation> arrayList, ListView listView) {
         List<Map<String, String>> data = new ArrayList<>();
         for (Consommation item : arrayList) {
@@ -456,20 +431,20 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
         ListAdapter listAdapter = new SimpleAdapter(getApplicationContext(), data, R.layout.list_item, new String[]{"name", "qte"}, new int[]{R.id.name, R.id.qte});
         listView.setAdapter(listAdapter);
     }
-    
+
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
     }
-    
+
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
-    
+
     private void InitProgress(View mView) {
         myProgressCalorie = mView.findViewById(R.id.circle_progress_bar_calorie);
         myProgressProtein = mView.findViewById(R.id.circle_progress_bar_proteine);
@@ -491,9 +466,9 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
         myProgressCarbsBack.setProgress(100);
         myProgressFatBack.setProgress(100);
         myProgressProteinBack.setProgress(100);
-        
+
     }
-    
+
     private GradientDrawable CreateGradient(int color) {
         LayerDrawable layerDrawable;
         GradientDrawable gradientDrawable;
@@ -502,7 +477,7 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
         gradientDrawable.setColor(getResources().getColor(color));
         return gradientDrawable;
     }
-    
+
     private void ShowPopup(View v, final int id, final int list) {
         ImageView exitView;
         ImageView deleteView;
@@ -526,7 +501,7 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
             case 5:
                 conso = mAlimentListSnack3.get(id);
                 break;
-            
+
         }
         switch (alimentsSet.get(conso.getIdAliment()).getTypeAliment()) {
             case LIQUIDE:
@@ -548,14 +523,14 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
-            
+
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (charSequence.toString().isEmpty()) updatePopup(0);
                 else updatePopup(Float.valueOf(charSequence.toString()));
-                
+
             }
-            
+
             @Override
             public void afterTextChanged(Editable editable) {
             }
@@ -568,7 +543,7 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
                 qteEdit.setText(qteEdit.getText() + "");
                 updatePopup(Float.valueOf(qteEdit.getText().toString()));
             }
-            
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
@@ -577,7 +552,7 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
         deleteView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+
                 BilanManager bm = new BilanManager();
                 bm.open();
                 switch (list) {
@@ -590,35 +565,35 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
                     case 1:
                         bm.delete(user.getIdUtilisateur(), selectedDate, Repas.SNACK1, mAlimentListSnack1.get(id).getIdAliment());
                         mAlimentListSnack1.remove(id);
-                        
+
                         updateList(mAlimentListSnack1, mListViewSnack1);
                         setListViewHeightBasedOnItems(mListViewSnack1);
                         break;
                     case 2:
                         bm.delete(user.getIdUtilisateur(), selectedDate, Repas.DEJEUNER, mAlimentListLunch.get(id).getIdAliment());
                         mAlimentListLunch.remove(id);
-                        
+
                         updateList(mAlimentListLunch, mListViewLunch);
                         setListViewHeightBasedOnItems(mListViewLunch);
                         break;
                     case 3:
                         bm.delete(user.getIdUtilisateur(), selectedDate, Repas.SNACK2, mAlimentListSnack2.get(id).getIdAliment());
                         mAlimentListSnack2.remove(id);
-                        
+
                         updateList(mAlimentListSnack2, mListViewSnack2);
                         setListViewHeightBasedOnItems(mListViewSnack2);
                         break;
                     case 4:
                         bm.delete(user.getIdUtilisateur(), selectedDate, Repas.DINER, mAlimentListDinner.get(id).getIdAliment());
                         mAlimentListDinner.remove(id);
-                        
+
                         updateList(mAlimentListDinner, mListViewDinner);
                         setListViewHeightBasedOnItems(mListViewDinner);
                         break;
                     case 5:
                         bm.delete(user.getIdUtilisateur(), selectedDate, Repas.SNACK3, mAlimentListSnack3.get(id).getIdAliment());
                         mAlimentListSnack3.remove(id);
-                        
+
                         updateList(mAlimentListSnack3, mListViewSnack3);
                         setListViewHeightBasedOnItems(mListViewSnack3);
                         break;
@@ -628,13 +603,13 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
                 ref.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-            
-                        Utils.sDataSnapshot=dataSnapshot;
+
+                        Utils.sDataSnapshot = dataSnapshot;
                         dumpConsomation(selectedDate);
-    
-    
+
+
                     }
-        
+
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
                     }
@@ -649,14 +624,14 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
             public void onClick(View view) {
                 myDialog.dismiss();
                 myDialog.cancel();
-                
+
             }
         });
         confirmButton = myDialog.findViewById(R.id.confirmButton);
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
                 BilanManager bm = new BilanManager();
                 bm.open();
                 switch (list) {
@@ -690,7 +665,7 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
                         bm.insert(user.getIdUtilisateur(), selectedDate, mAlimentListSnack3.get(id));
                         updateList(mAlimentListSnack3, mListViewSnack3);
                         break;
-                    
+
                 }
                 Utils.dumpDatasnapshot();
                 myDialog.dismiss();
@@ -701,7 +676,7 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         myDialog.show();
     }
-    
+
     private void updateTotal() {
         float pro = 0, cal = 0, lip = 0, glu = 0;
         float qte;
@@ -717,7 +692,7 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
                 lip += a.getQuantiteLipides() * c.getQuantite() / 100;
                 glu += a.getQuantiteGlucides() * c.getQuantite() / 100;
             }
-            
+
         }
         mProteinConso += pro;
         mCalorieConso += cal;
@@ -736,7 +711,7 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
                 lip += a.getQuantiteLipides() * c.getQuantite() / 100;
                 glu += a.getQuantiteGlucides() * c.getQuantite() / 100;
             }
-            
+
         }
         mProteinConso += pro;
         mCalorieConso += cal;
@@ -755,7 +730,7 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
                 lip += a.getQuantiteLipides() * c.getQuantite() / 100;
                 glu += a.getQuantiteGlucides() * c.getQuantite() / 100;
             }
-            
+
         }
         mProteinConso += pro;
         mCalorieConso += cal;
@@ -774,7 +749,7 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
                 lip += a.getQuantiteLipides() * c.getQuantite() / 100;
                 glu += a.getQuantiteGlucides() * c.getQuantite() / 100;
             }
-            
+
         }
         mProteinConso += pro;
         mCalorieConso += cal;
@@ -793,7 +768,7 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
                 lip += a.getQuantiteLipides() * c.getQuantite() / 100;
                 glu += a.getQuantiteGlucides() * c.getQuantite() / 100;
             }
-            
+
         }
         mProteinConso += pro;
         mCalorieConso += cal;
@@ -812,7 +787,7 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
                 lip += a.getQuantiteLipides() * c.getQuantite() / 100;
                 glu += a.getQuantiteGlucides() * c.getQuantite() / 100;
             }
-            
+
         }
         mProteinConso += pro;
         mCalorieConso += cal;
@@ -823,9 +798,9 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
         ((TextView) mViewSnack3.findViewById(R.id.repas_lip_cpt)).setText((int) lip + " g");
         ((TextView) mViewSnack3.findViewById(R.id.repas_glu_cpt)).setText((int) glu + " g");
         updateProgress(mView);
-        
+
     }
-    
+
     private void updateProgress(View view) {
         float prot100 = 100 * mProteinConso / mProteinNeeded, carbs100 = 100 * mCarbsConso / mCarbsNeeded, fat100 = 100 * mFatConso / mFatNeeded, cal100 = 100 * mCalorieConso / mCalorieNeeded;
         myProgressCalorie.setProgress((int) (100 * mCalorieConso / mCalorieNeeded));
@@ -840,9 +815,9 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
         myProgressFat.setProgress((int) fat100);
         TextView FatCpt = mView.findViewById(R.id.fat_cpt);
         FatCpt.setText((int) mFatConso + "\ng");
-        
+
     }
-    
+
     private void updatePopup(float qte) {
         Aliment a = alimentsSet.get(conso.getIdAliment());
         ((TextView) myDialog.findViewById(R.id.alimentname_cpt)).setText(a.getNom());
@@ -851,7 +826,7 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
         ((TextView) myDialog.findViewById(R.id.fat_cpt)).setText((int) (a.getQuantiteLipides() * qte * getCoef() / 100) + "");
         ((TextView) myDialog.findViewById(R.id.carb_cpt)).setText((int) (a.getQuantiteGlucides() * qte * getCoef() / 100) + "");
     }
-    
+
     @Override
     public void onDateSet(DatePickerDialog dialog, int year, int monthOfYear, int dayOfMonth) {
         selectedDate = new Date(year - 1900, monthOfYear, dayOfMonth);
@@ -860,9 +835,9 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
         else
             dateSpinner.setText(new SimpleDateFormat("EEE d MMM").format(selectedDate).toUpperCase());
         SetConsomation(selectedDate);
-        
+
     }
-    
+
     private float getCoef() {
         try {
             Float coeff = 1f;
@@ -905,9 +880,8 @@ public class JournalFragment extends Fragment implements DatePickerDialog.OnDate
             return 0;
         }
     }
-    
-    
-    
+
+
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
     }

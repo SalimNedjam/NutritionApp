@@ -8,14 +8,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
-
+import android.widget.*;
 import com.deepside.nutritionapp.Managers.AlimentsFavorisManager;
 import com.deepside.nutritionapp.Managers.BilanManager;
 import com.deepside.nutritionapp.R;
@@ -47,7 +40,7 @@ public class AjoutAlimentActivity extends AppCompatActivity {
     private Date selectedDate;
     private Repas repas;
     private String[] unites;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,13 +93,13 @@ public class AjoutAlimentActivity extends AppCompatActivity {
                 @Override
                 public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 }
-                
+
                 @Override
                 public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                     consumedQuantityTextView.setText(charSequence);
                     calculateConsommation();
                 }
-                
+
                 @Override
                 public void afterTextChanged(Editable editable) {
                 }
@@ -116,7 +109,7 @@ public class AjoutAlimentActivity extends AppCompatActivity {
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                     calculateConsommation();
                 }
-                
+
                 @Override
                 public void onNothingSelected(AdapterView<?> adapterView) {
                 }
@@ -142,39 +135,38 @@ public class AjoutAlimentActivity extends AppCompatActivity {
                         ref.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
-                                Utils.sDataSnapshot=dataSnapshot;
+                                Utils.sDataSnapshot = dataSnapshot;
                                 onBackPressed();
                                 finish();
                             }
-        
+
                             @Override
                             public void onCancelled(DatabaseError databaseError) {
-                            
+
                             }
                         });
-                        
-                        
-                        
+
+
                     } else {
                         Toast.makeText(AjoutAlimentActivity.this, "Veuillez entrer une quantité valide", Toast.LENGTH_LONG).show();
                     }
-                    
+
                 }
-                
+
             });
-            
+
         }
     }
-    
+
     private void calculateConsommation() {
         Float consumedQuantity = calculateQuantity();
         alimentCaloriesForConsumedTextView.setText(String.valueOf((int) (searchedAliment.getNbCalories() * consumedQuantity / 100)));
         alimentProteinesForConsumedTextView.setText(String.valueOf((int) (searchedAliment.getQuantiteProteines() * consumedQuantity / 100)));
         alimentLipidesForConsumedTextView.setText(String.valueOf((int) (searchedAliment.getQuantiteLipides() * consumedQuantity / 100)));
         alimentGlucidesForConsumedTextView.setText(String.valueOf((int) (searchedAliment.getQuantiteGlucides() * consumedQuantity / 100)));
-        
+
     }
-    
+
     private float calculateQuantity() {
         try {
             Float consumedQuantity = Float.parseFloat(consumedQuantityEditText.getText().toString());
@@ -221,7 +213,7 @@ public class AjoutAlimentActivity extends AppCompatActivity {
             return 0;
         }
     }
-    
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -235,5 +227,5 @@ public class AjoutAlimentActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    
+
 }

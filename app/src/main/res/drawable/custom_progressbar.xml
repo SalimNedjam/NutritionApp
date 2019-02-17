@@ -5,7 +5,7 @@
     <item android:id="@android:id/background">
         <rotate>
             <layer-list>
-                <item android:drawable="@drawable/progress_bar" />
+                <item android:drawable="@drawable/progress_bar"/>
             </layer-list>
         </rotate>
     </item>
@@ -14,7 +14,7 @@
     <item android:id="@android:id/progress">
         <clip>
             <layer-list>
-                <item android:drawable="@drawable/progressbar_progress" />
+                <item android:drawable="@drawable/progressbar_progress"/>
             </layer-list>
             <!-- <shape>
 

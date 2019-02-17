@@ -12,36 +12,14 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
-
+import android.widget.*;
 import com.deepside.nutritionapp.Managers.AlimentManager;
 import com.deepside.nutritionapp.Managers.RecommandationManager;
 import com.deepside.nutritionapp.R;
-import com.deepside.nutritionapp.Suivi.Aliment;
-import com.deepside.nutritionapp.Suivi.Bilan;
-import com.deepside.nutritionapp.Suivi.Consommation;
-import com.deepside.nutritionapp.Suivi.Objectif;
-import com.deepside.nutritionapp.Suivi.Recommandation;
-import com.deepside.nutritionapp.Suivi.Regime;
-import com.deepside.nutritionapp.Suivi.Repas;
-import com.deepside.nutritionapp.Suivi.TypeAliment;
-import com.deepside.nutritionapp.Suivi.Utilisateur;
+import com.deepside.nutritionapp.Suivi.*;
 import com.deepside.nutritionapp.Utils.Utils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
@@ -70,11 +48,11 @@ public class RecommandéFragment extends Fragment {
     private AlimentManager am;
     private ArrayList<Bilan> bilans;
     private HashMap<Long, Aliment> alimentsSet;
-    
+
     public RecommandéFragment() {
     }
-    
-    
+
+
     public static RecommandéFragment newInstance(String param1, String param2) {
         RecommandéFragment fragment = new RecommandéFragment();
         Bundle args = new Bundle();
@@ -83,7 +61,7 @@ public class RecommandéFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-    
+
     private static void setListViewHeightBasedOnItems(ListView listView) {
         ListAdapter listAdapter = listView.getAdapter();
         if (listAdapter != null) {
@@ -101,12 +79,12 @@ public class RecommandéFragment extends Fragment {
             params.height = totalItemsHeight + totalDividersHeight + totalPadding;
             listView.setLayoutParams(params);
             listView.requestLayout();
-            
+
         }
-        
+
     }
-    
-    
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -128,11 +106,11 @@ public class RecommandéFragment extends Fragment {
         mAlimentDayArray.add(3, mAlimentListSnack2);
         mAlimentDayArray.add(4, mAlimentListDinner);
         mAlimentDayArray.add(5, mAlimentListSnack3);
-        regime=new Regime(user);
+        regime = new Regime(user);
         regime.calculPlanAlimentaire(user);
-        
+
     }
-    
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mInflater = inflater;
@@ -141,7 +119,7 @@ public class RecommandéFragment extends Fragment {
         initRepasView();
         return mView;
     }
-    
+
     private void initRepasView() {
         LinearLayout main_layout = mView.findViewById(R.id.root);
         mViewBreakfast = (LinearLayout) mInflater.inflate(R.layout.repas_layout, null);
@@ -175,42 +153,42 @@ public class RecommandéFragment extends Fragment {
         mViewDinner.findViewById(R.id.add_aliment_repas).setVisibility(View.GONE);
         mViewSnack3.findViewById(R.id.add_aliment_repas).setVisibility(View.GONE);
         mListViewBreakfast.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            
+
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 ShowPopup(mView, i, 0);
             }
         });
         mListViewSnack1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            
+
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 ShowPopup(mView, i, 1);
             }
         });
         mListViewLunch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            
+
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 ShowPopup(mView, i, 2);
             }
         });
         mListViewSnack2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            
+
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 ShowPopup(mView, i, 3);
             }
         });
         mListViewDinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            
+
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 ShowPopup(mView, i, 4);
             }
         });
         mListViewSnack3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            
+
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 ShowPopup(mView, i, 5);
@@ -227,20 +205,19 @@ public class RecommandéFragment extends Fragment {
         rm.open();
         am = new AlimentManager();
         showCheckBox();
-    
-    
-        if (Utils.sDataSnapshot.child("RegimeRecommande").child(user.getIdUtilisateur()).exists())
-        {
+
+
+        if (Utils.sDataSnapshot.child("RegimeRecommande").child(user.getIdUtilisateur()).exists()) {
             Recommandation recommandation = rm.get(Utils.sDataSnapshot.child("RegimeRecommande").child(user.getIdUtilisateur()));
             ArrayList<Consommation> consommations = recommandation.getAlimentsRecommandes();
-            HashSet <Integer> hashSet=new HashSet<>();
+            HashSet<Integer> hashSet = new HashSet<>();
             System.out.println(consommations);
             for (Consommation c : consommations) {
                 idAlimentsSet.add(c.getIdAliment());
                 Consommation consommation = new Consommation(c.getIdAliment(), c.getRepas(), c.getQuantite());
                 ((ArrayList<Consommation>) mAlimentDayArray.get(c.getRepas().ordinal())).add(consommation);
                 hashSet.add(c.getRepas().ordinal());
-            
+
             }
             for (Long l : idAlimentsSet) {
                 if (Utils.sDataSnapshot.child("Aliment").child(String.valueOf(l)).exists()) {
@@ -261,64 +238,59 @@ public class RecommandéFragment extends Fragment {
             setListViewHeightBasedOnItems(mListViewSnack2);
             setListViewHeightBasedOnItems(mListViewDinner);
             setListViewHeightBasedOnItems(mListViewSnack3);
-        
-            nbRepas=hashSet.size();
-            if (hashSet.contains(1))
-            {
+
+            nbRepas = hashSet.size();
+            if (hashSet.contains(1)) {
                 snack1CheckBox.setChecked(true);
                 mViewSnack1.setVisibility(View.VISIBLE);
                 repasVisibility[0] = true;
-            
+
             } else {
                 snack1CheckBox.setChecked(false);
                 mViewSnack1.setVisibility(View.GONE);
                 repasVisibility[0] = false;
             }
-            if (hashSet.contains(3))
-            {
+            if (hashSet.contains(3)) {
                 snack2CheckBox.setChecked(true);
                 mViewSnack2.setVisibility(View.VISIBLE);
                 repasVisibility[1] = true;
-            
+
             } else {
                 snack2CheckBox.setChecked(false);
                 mViewSnack2.setVisibility(View.GONE);
                 repasVisibility[1] = false;
             }
-            if (hashSet.contains(5))
-            {
+            if (hashSet.contains(5)) {
                 snack3CheckBox.setChecked(true);
                 mViewSnack3.setVisibility(View.VISIBLE);
                 repasVisibility[2] = true;
-            
+
             } else {
                 snack3CheckBox.setChecked(false);
                 mViewSnack3.setVisibility(View.GONE);
                 repasVisibility[2] = false;
             }
-        
+
             snack1CheckBox.setOnCheckedChangeListener(onCheckedChangeListener);
             snack2CheckBox.setOnCheckedChangeListener(onCheckedChangeListener);
             snack3CheckBox.setOnCheckedChangeListener(onCheckedChangeListener);
-        
-        }
-        else
-        {
-            
+
+        } else {
+
             snack1CheckBox.setOnCheckedChangeListener(onCheckedChangeListener);
             snack2CheckBox.setOnCheckedChangeListener(onCheckedChangeListener);
             snack3CheckBox.setOnCheckedChangeListener(onCheckedChangeListener);
             snack1CheckBox.setChecked(false);
             snack2CheckBox.setChecked(false);
             snack3CheckBox.setChecked(false);
-            nbRepas=3;
-        
+            nbRepas = 3;
+
         }
-        
-        
+
+
     }
-    
-    
+
+
     private void updateList(ArrayList<Consommation> arrayList, ListView listView) {
         List<Map<String, String>> data = new ArrayList<>();
         for (Consommation item : arrayList) {
@@ -330,20 +302,20 @@ public class RecommandéFragment extends Fragment {
         ListAdapter listAdapter = new SimpleAdapter(getApplicationContext(), data, R.layout.list_item, new String[]{"name", "qte"}, new int[]{R.id.name, R.id.qte});
         listView.setAdapter(listAdapter);
     }
-    
+
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
     }
-    
+
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
-    
+
     private void showCheckBox() {
         onCheckedChangeListener = new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -357,41 +329,41 @@ public class RecommandéFragment extends Fragment {
                         mViewSnack1.setVisibility(View.GONE);
                         repasVisibility[0] = false;
                         nbRepas -= 1;
-                        
+
                     }
-                    
+
                 } else if (compoundButton == snack2CheckBox) {
                     if (compoundButton.isChecked()) {
                         mViewSnack2.setVisibility(View.VISIBLE);
                         repasVisibility[1] = true;
                         nbRepas += 1;
-                        
+
                     } else {
                         mViewSnack2.setVisibility(View.GONE);
                         repasVisibility[1] = false;
                         nbRepas -= 1;
-                        
+
                     }
                 } else if (compoundButton == snack3CheckBox) {
                     if (compoundButton.isChecked()) {
                         mViewSnack3.setVisibility(View.VISIBLE);
                         repasVisibility[2] = true;
                         nbRepas += 1;
-                        
+
                     } else {
                         mViewSnack3.setVisibility(View.GONE);
                         repasVisibility[2] = false;
                         nbRepas -= 1;
-                        
+
                     }
                 }
                 calculeRepartition();
-                
+
             }
         };
-        
+
     }
-    
+
     private void calculeRepartition() {
         switch (nbRepas) {
             case 3:
@@ -447,13 +419,13 @@ public class RecommandéFragment extends Fragment {
                 repasPourcentage[5] = 0.15f;
                 break;
         }
-        
-        
+
+
         recalibrage();
-        
-        
+
+
     }
-    
+
     private void recalibrage() {
         regime.calculPlanAlimentaire(user);
         am.open();
@@ -472,7 +444,7 @@ public class RecommandéFragment extends Fragment {
         alimentsSet.put(12L, new Aliment(12L, "Salade verte", 13, 2, 0, 1, TypeAliment.SOLIDE));
         float pro, lip, glu, qte;
         Aliment aliment;
-        RecommandationManager recommandationManager=new RecommandationManager();
+        RecommandationManager recommandationManager = new RecommandationManager();
         recommandationManager.open();
         recommandationManager.delete(user.getIdUtilisateur());
         if (repasPourcentage[0] != 0) {
@@ -488,25 +460,22 @@ public class RecommandéFragment extends Fragment {
             qte = pro / aliment.getQuantiteProteines();
             glu -= aliment.getQuantiteGlucides() * qte;
             mAlimentListBreakfast.add(new Consommation(5, Repas.get(0), qte * 100));
-            if (user.getObjectif()== Objectif.GAIN_MASSE)
-            {
+            if (user.getObjectif() == Objectif.GAIN_MASSE) {
                 aliment = alimentsSet.get(1L);
-                qte = glu * 0.75f/aliment.getQuantiteGlucides();
+                qte = glu * 0.75f / aliment.getQuantiteGlucides();
                 mAlimentListBreakfast.add(new Consommation(1, Repas.get(0), qte * 100));
                 aliment = alimentsSet.get(2L);
-                qte = glu * 0.25f/ aliment.getQuantiteGlucides();
+                qte = glu * 0.25f / aliment.getQuantiteGlucides();
                 mAlimentListBreakfast.add(new Consommation(2, Repas.get(0), qte * 100));
-            }
-            else {
+            } else {
                 aliment = alimentsSet.get(1L);
                 qte = glu / aliment.getQuantiteGlucides();
                 mAlimentListBreakfast.add(new Consommation(1, Repas.get(0), qte * 100));
             }
             updateList(mAlimentListBreakfast, mListViewBreakfast);
             setListViewHeightBasedOnItems(mListViewBreakfast);
-            for (Consommation c:mAlimentListBreakfast)
-            {
-                recommandationManager.insert(user,c.getRepas(),alimentsSet.get(c.getIdAliment()),c.getQuantite());
+            for (Consommation c : mAlimentListBreakfast) {
+                recommandationManager.insert(user, c.getRepas(), alimentsSet.get(c.getIdAliment()), c.getQuantite());
             }
         }
         if (repasPourcentage[1] != 0) {
@@ -522,25 +491,22 @@ public class RecommandéFragment extends Fragment {
             qte = pro / aliment.getQuantiteProteines();
             glu -= aliment.getQuantiteGlucides() * qte;
             mAlimentListSnack1.add(new Consommation(5, Repas.get(1), qte * 100));
-            if (user.getObjectif()== Objectif.GAIN_MASSE)
-            {
+            if (user.getObjectif() == Objectif.GAIN_MASSE) {
                 aliment = alimentsSet.get(1L);
-                qte = glu * 0.75f/aliment.getQuantiteGlucides();
+                qte = glu * 0.75f / aliment.getQuantiteGlucides();
                 mAlimentListSnack1.add(new Consommation(1, Repas.get(1), qte * 100));
                 aliment = alimentsSet.get(2L);
-                qte = glu * 0.25f/ aliment.getQuantiteGlucides();
+                qte = glu * 0.25f / aliment.getQuantiteGlucides();
                 mAlimentListSnack1.add(new Consommation(2, Repas.get(1), qte * 100));
-            }
-            else {
+            } else {
                 aliment = alimentsSet.get(1L);
                 qte = glu / aliment.getQuantiteGlucides();
                 mAlimentListSnack1.add(new Consommation(1, Repas.get(1), qte * 100));
             }
             updateList(mAlimentListSnack1, mListViewSnack1);
             setListViewHeightBasedOnItems(mListViewSnack1);
-            for (Consommation c:mAlimentListSnack1)
-            {
-                recommandationManager.insert(user,c.getRepas(),alimentsSet.get(c.getIdAliment()),c.getQuantite());
+            for (Consommation c : mAlimentListSnack1) {
+                recommandationManager.insert(user, c.getRepas(), alimentsSet.get(c.getIdAliment()), c.getQuantite());
             }
         }
         if (repasPourcentage[2] != 0) {
@@ -558,15 +524,14 @@ public class RecommandéFragment extends Fragment {
             lip -= aliment.getQuantiteLipides() * qte;
             mAlimentListLunch.add(new Consommation(3, Repas.get(2), qte * 100));
             aliment = alimentsSet.get(9L);
-            qte = lip/ aliment.getQuantiteLipides();
+            qte = lip / aliment.getQuantiteLipides();
             mAlimentListLunch.add(new Consommation(9, Repas.get(2), qte * 100));
             mAlimentListLunch.add(new Consommation(12, Repas.get(2), 100));
-            
+
             updateList(mAlimentListLunch, mListViewLunch);
             setListViewHeightBasedOnItems(mListViewLunch);
-            for (Consommation c:mAlimentListLunch)
-            {
-                recommandationManager.insert(user,c.getRepas(),alimentsSet.get(c.getIdAliment()),c.getQuantite());
+            for (Consommation c : mAlimentListLunch) {
+                recommandationManager.insert(user, c.getRepas(), alimentsSet.get(c.getIdAliment()), c.getQuantite());
             }
         }
         if (repasPourcentage[3] != 0) {
@@ -582,25 +547,22 @@ public class RecommandéFragment extends Fragment {
             qte = pro / aliment.getQuantiteProteines();
             glu -= aliment.getQuantiteGlucides() * qte;
             mAlimentListSnack2.add(new Consommation(5, Repas.get(3), qte * 100));
-            if (user.getObjectif()== Objectif.GAIN_MASSE)
-            {
+            if (user.getObjectif() == Objectif.GAIN_MASSE) {
                 aliment = alimentsSet.get(1L);
-                qte = glu * 0.75f/aliment.getQuantiteGlucides();
+                qte = glu * 0.75f / aliment.getQuantiteGlucides();
                 mAlimentListSnack2.add(new Consommation(1, Repas.get(3), qte * 100));
                 aliment = alimentsSet.get(2L);
-                qte = glu *0.25f/ aliment.getQuantiteGlucides();
+                qte = glu * 0.25f / aliment.getQuantiteGlucides();
                 mAlimentListSnack2.add(new Consommation(2, Repas.get(3), qte * 100));
-            }
-            else {
+            } else {
                 aliment = alimentsSet.get(1L);
                 qte = glu / aliment.getQuantiteGlucides();
                 mAlimentListSnack2.add(new Consommation(1, Repas.get(3), qte * 100));
             }
             updateList(mAlimentListSnack2, mListViewSnack2);
             setListViewHeightBasedOnItems(mListViewSnack2);
-            for (Consommation c:mAlimentListSnack2)
-            {
-                recommandationManager.insert(user,c.getRepas(),alimentsSet.get(c.getIdAliment()),c.getQuantite());
+            for (Consommation c : mAlimentListSnack2) {
+                recommandationManager.insert(user, c.getRepas(), alimentsSet.get(c.getIdAliment()), c.getQuantite());
             }
         }
         if (repasPourcentage[4] != 0) {
@@ -623,9 +585,8 @@ public class RecommandéFragment extends Fragment {
             mAlimentListDinner.add(new Consommation(12, Repas.get(4), 100));
             updateList(mAlimentListDinner, mListViewDinner);
             setListViewHeightBasedOnItems(mListViewDinner);
-            for (Consommation c:mAlimentListDinner)
-            {
-                recommandationManager.insert(user,c.getRepas(),alimentsSet.get(c.getIdAliment()),c.getQuantite());
+            for (Consommation c : mAlimentListDinner) {
+                recommandationManager.insert(user, c.getRepas(), alimentsSet.get(c.getIdAliment()), c.getQuantite());
             }
         }
         if (repasPourcentage[5] != 0) {
@@ -640,34 +601,31 @@ public class RecommandéFragment extends Fragment {
             qte = lip / aliment.getQuantiteLipides();
             glu -= aliment.getQuantiteGlucides() * qte;
             mAlimentListSnack3.add(new Consommation(8L, Repas.get(5), qte * 100));
-            if (user.getObjectif()== Objectif.GAIN_MASSE)
-            {
+            if (user.getObjectif() == Objectif.GAIN_MASSE) {
                 aliment = alimentsSet.get(1L);
-                qte = glu * 0.75f/aliment.getQuantiteGlucides();
+                qte = glu * 0.75f / aliment.getQuantiteGlucides();
                 mAlimentListSnack3.add(new Consommation(1, Repas.get(5), qte * 100));
                 aliment = alimentsSet.get(2L);
-                qte = glu * 0.25f/ aliment.getQuantiteGlucides();
+                qte = glu * 0.25f / aliment.getQuantiteGlucides();
                 mAlimentListSnack3.add(new Consommation(2, Repas.get(5), qte * 100));
-            }
-            else {
+            } else {
                 aliment = alimentsSet.get(1L);
                 qte = glu / aliment.getQuantiteGlucides();
                 mAlimentListSnack3.add(new Consommation(1, Repas.get(5), qte * 100));
             }
             updateList(mAlimentListSnack3, mListViewSnack3);
             setListViewHeightBasedOnItems(mListViewSnack3);
-            for (Consommation c:mAlimentListSnack3)
-            {
-                recommandationManager.insert(user,c.getRepas(),alimentsSet.get(c.getIdAliment()),c.getQuantite());
+            for (Consommation c : mAlimentListSnack3) {
+                recommandationManager.insert(user, c.getRepas(), alimentsSet.get(c.getIdAliment()), c.getQuantite());
             }
         }
         updateTotal();
         Utils.dumpDatasnapshot();
-        
-        
+
+
     }
-    
-    
+
+
     private void ShowPopup(View v, final int id, final int list) {
         ImageView exitView;
         switch (list) {
@@ -689,7 +647,7 @@ public class RecommandéFragment extends Fragment {
             case 5:
                 conso = mAlimentListSnack3.get(id);
                 break;
-            
+
         }
         myDialog.setContentView(R.layout.popup_aliment);
         updatePopup();
@@ -700,12 +658,12 @@ public class RecommandéFragment extends Fragment {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
-            
+
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 updatePopup();
             }
-            
+
             @Override
             public void afterTextChanged(Editable editable) {
             }
@@ -717,14 +675,14 @@ public class RecommandéFragment extends Fragment {
             public void onClick(View view) {
                 myDialog.dismiss();
                 myDialog.cancel();
-                
+
             }
         });
         myDialog.findViewById(R.id.confirmButton).setVisibility(View.GONE);
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         myDialog.show();
     }
-    
+
     private void updateTotal() {
         float pro = 0, cal = 0, lip = 0, glu = 0;
         for (Consommation c : mAlimentListBreakfast) {
@@ -749,7 +707,7 @@ public class RecommandéFragment extends Fragment {
                 lip += a.getQuantiteLipides() * c.getQuantite() / 100;
                 glu += a.getQuantiteGlucides() * c.getQuantite() / 100;
             }
-            
+
         }
         ((TextView) mViewSnack1.findViewById(R.id.repas_cal_cpt)).setText((int) cal + " Kcal");
         ((TextView) mViewSnack1.findViewById(R.id.repas_prot_cpt)).setText((int) pro + " g");
@@ -764,7 +722,7 @@ public class RecommandéFragment extends Fragment {
                 lip += a.getQuantiteLipides() * c.getQuantite() / 100;
                 glu += a.getQuantiteGlucides() * c.getQuantite() / 100;
             }
-            
+
         }
         ((TextView) mViewLunch.findViewById(R.id.repas_cal_cpt)).setText((int) cal + " Kcal");
         ((TextView) mViewLunch.findViewById(R.id.repas_prot_cpt)).setText((int) pro + " g");
@@ -779,7 +737,7 @@ public class RecommandéFragment extends Fragment {
                 lip += a.getQuantiteLipides() * c.getQuantite() / 100;
                 glu += a.getQuantiteGlucides() * c.getQuantite() / 100;
             }
-            
+
         }
         ((TextView) mViewSnack2.findViewById(R.id.repas_cal_cpt)).setText((int) cal + " Kcal");
         ((TextView) mViewSnack2.findViewById(R.id.repas_prot_cpt)).setText((int) pro + " g");
@@ -794,7 +752,7 @@ public class RecommandéFragment extends Fragment {
                 lip += a.getQuantiteLipides() * c.getQuantite() / 100;
                 glu += a.getQuantiteGlucides() * c.getQuantite() / 100;
             }
-            
+
         }
         ((TextView) mViewDinner.findViewById(R.id.repas_cal_cpt)).setText((int) cal + " Kcal");
         ((TextView) mViewDinner.findViewById(R.id.repas_prot_cpt)).setText((int) pro + " g");
@@ -809,16 +767,16 @@ public class RecommandéFragment extends Fragment {
                 lip += a.getQuantiteLipides() * c.getQuantite() / 100;
                 glu += a.getQuantiteGlucides() * c.getQuantite() / 100;
             }
-            
+
         }
         ((TextView) mViewSnack3.findViewById(R.id.repas_cal_cpt)).setText((int) cal + " Kcal");
         ((TextView) mViewSnack3.findViewById(R.id.repas_prot_cpt)).setText((int) pro + " g");
         ((TextView) mViewSnack3.findViewById(R.id.repas_lip_cpt)).setText((int) lip + " g");
         ((TextView) mViewSnack3.findViewById(R.id.repas_glu_cpt)).setText((int) glu + " g");
-        
+
     }
-    
-    
+
+
     private void updatePopup() {
         Aliment a = alimentsSet.get(conso.getIdAliment());
         ((TextView) myDialog.findViewById(R.id.alimentname_cpt)).setText(a.getNom());
@@ -827,8 +785,8 @@ public class RecommandéFragment extends Fragment {
         ((TextView) myDialog.findViewById(R.id.fat_cpt)).setText((int) (a.getQuantiteLipides() * conso.getQuantite() / 100) + "");
         ((TextView) myDialog.findViewById(R.id.carb_cpt)).setText((int) (a.getQuantiteGlucides() * conso.getQuantite() / 100) + "");
     }
-    
-    
+
+
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
     }

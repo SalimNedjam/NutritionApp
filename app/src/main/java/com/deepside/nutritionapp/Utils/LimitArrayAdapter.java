@@ -11,15 +11,15 @@ import java.util.Set;
  */
 
 public class LimitArrayAdapter<T> extends ArrayAdapter<T> {
-    
+
     public LimitArrayAdapter(Context context, int textViewResourceId, Set<T> objects) {
         super(context, textViewResourceId, new ArrayList<>(objects));
     }
-    
+
     @Override
     public int getCount() {
         int LIMIT = 8;
         return Math.min(LIMIT, super.getCount());
     }
-    
+
 }

@@ -3,11 +3,11 @@
     <item android:top="15dp">
         <shape android:shape="line">
 
-            <solid android:color="@android:color/transparent" />
+            <solid android:color="@android:color/transparent"/>
             <stroke
-                android:width="3dp"
-                android:color="@color/red" />
+                    android:width="3dp"
+                    android:color="@color/red"/>
         </shape>
     </item>
-    
+
 </layer-list>

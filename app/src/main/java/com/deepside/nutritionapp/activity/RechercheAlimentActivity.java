@@ -8,15 +8,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ListView;
-import android.widget.Toast;
-
+import android.widget.*;
 import com.deepside.nutritionapp.Managers.AlimentManager;
 import com.deepside.nutritionapp.Managers.AlimentsFavorisManager;
 import com.deepside.nutritionapp.R;
@@ -27,11 +19,7 @@ import com.deepside.nutritionapp.Utils.OccurenceRechercheAliment;
 import com.deepside.nutritionapp.Utils.Utils;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,12 +34,12 @@ public class RechercheAlimentActivity extends AppCompatActivity {
     private HashMap<String, String> alimentsTrouves;
     private ArrayList<String> nomsAlimentsTrouves;
     private AlimentManager am;
-    
-    
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+
         setContentView(R.layout.activity_recherche_aliment);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -92,17 +80,17 @@ public class RechercheAlimentActivity extends AppCompatActivity {
                                     finish();
                                     startActivity(i);
                                 } else {
-                                    Toast.makeText(getApplicationContext(),"Produit introuvable",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), "Produit introuvable", Toast.LENGTH_SHORT).show();
                                 }
                             }
-                            
+
                             @Override
                             public void onCancelled(DatabaseError databaseError) {
                             }
                         });
-                        
+
                     }
-                    
+
                 }
             });
             rechercheCodeBarreImageButton.setOnClickListener(new View.OnClickListener() {
@@ -113,7 +101,7 @@ public class RechercheAlimentActivity extends AppCompatActivity {
                     intent.putExtra("date", getIntent().getStringExtra("date"));
                     startActivity(intent);
                     finish();
-                    
+
                 }
             });
             addSuggestions();
@@ -137,7 +125,7 @@ public class RechercheAlimentActivity extends AppCompatActivity {
                     intent.putExtra("aliment", aliment);
                     startActivity(intent);
                     finish();
-            
+
                 }
             });
             rechercheNomAutoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -154,33 +142,33 @@ public class RechercheAlimentActivity extends AppCompatActivity {
                             startActivity(intent);
                             finish();
                         }
-                        
+
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
                         }
                     });
-                    
+
                 }
             });
             rechercheNomAutoCompleteTextView.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 }
-    
+
                 @Override
                 public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 }
-    
+
                 @Override
                 public void afterTextChanged(Editable editable) {
-    
-                    if(editable.length() > 2) {
+
+                    if (editable.length() > 2) {
                         if (!rechercheNomAutoCompleteTextView.isPopupShowing()) {
                             Toast.makeText(getApplicationContext(), "Aucun aliment trouvé, essayez de rechercher l'aliment en anglais.", Toast.LENGTH_SHORT).show();
                             return;
                         }
                     }
-                    
+
                 }
             });
             Intent i = getIntent();
@@ -199,24 +187,23 @@ public class RechercheAlimentActivity extends AppCompatActivity {
                             intent.putExtra("aliment", aliment);
                             startActivity(intent);
                             finish();
-                            
+
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Produit introuvable", Toast.LENGTH_SHORT).show();
+
                         }
-                        else {
-                            Toast.makeText(getApplicationContext(),"Produit introuvable",Toast.LENGTH_SHORT).show();
-    
-                        }
-                        
+
                     }
-                    
+
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
                     }
                 });
-                
+
             }
         }
     }
-    
+
     private void addSuggestions() {
         alimentsTrouves = new HashMap<>();
         for (DataSnapshot snapshot : Utils.sDataSnapshot.child("Aliment").getChildren()) {
@@ -225,7 +212,7 @@ public class RechercheAlimentActivity extends AppCompatActivity {
         ArrayAdapter<String> rechercheNomAdapter = new LimitArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, alimentsTrouves.keySet());
         rechercheNomAutoCompleteTextView.setAdapter(rechercheNomAdapter);
     }
-    
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -235,5 +222,5 @@ public class RechercheAlimentActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    
+
 }

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <inset xmlns:android="http://schemas.android.com/apk/res/android"
-    android:insetLeft="18dp"
-    android:insetRight="18dp" >
+       android:insetLeft="18dp"
+       android:insetRight="18dp">
 
     <shape
-        android:shape="line" >
+            android:shape="line">
         <stroke
-            android:dashGap="1dp"
+                android:dashGap="1dp"
 
-            android:dashWidth="1.5dp"
-            android:width="0.4dp"
-            android:color="#FF404040" />
+                android:dashWidth="1.5dp"
+                android:width="0.4dp"
+                android:color="#FF404040"/>
 
-        <size android:height="2dp" />
+        <size android:height="2dp"/>
 
     </shape>
 

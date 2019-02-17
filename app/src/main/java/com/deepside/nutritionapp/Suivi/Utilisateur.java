@@ -13,10 +13,10 @@ public class Utilisateur implements Serializable {
     private Morphotype morphotype;
     private Niveau niveau;
     private Objectif objectif;
-    
+
     public Utilisateur() {
     }
-    
+
     public Utilisateur(String idUtilisateur, String username, String dateInscription, int age, int taille, float poids, float poidsDesire, Sexe sexe, ActivitePhysique activite, Morphotype morphotype, Niveau niveau, Objectif objectif) {
         this.idUtilisateur = idUtilisateur;
         this.username = username;
@@ -31,107 +31,107 @@ public class Utilisateur implements Serializable {
         this.niveau = niveau;
         this.objectif = objectif;
     }
-    
+
     public String getUsername() {
         return username;
     }
-    
+
     public void setUsername(String username) {
         this.username = username;
     }
-    
+
     public String getDateInscription() {
         return dateInscription;
     }
-    
+
     public void setDateInscription(String dateInscription) {
         this.dateInscription = dateInscription;
     }
-    
+
     public int getAge() {
         return age;
     }
-    
+
     public void setAge(int age) {
         this.age = age;
     }
-    
+
     public int getTaille() {
         return taille;
     }
-    
+
     public void setTaille(int taille) {
         this.taille = taille;
     }
-    
+
     public float getPoids() {
         return poids;
     }
-    
+
     public void setPoids(float poids) {
         this.poids = poids;
     }
-    
+
     public float getPoidsDesire() {
         return poidsDesire;
     }
-    
+
     public void setPoidsDesire(float poidsDesire) {
         this.poidsDesire = poidsDesire;
     }
-    
+
     public Sexe getSexe() {
         return sexe;
     }
-    
+
     public void setSexe(Sexe sexe) {
         this.sexe = sexe;
     }
-    
+
     public ActivitePhysique getActivite() {
         return activite;
     }
-    
+
     public void setActivite(ActivitePhysique activite) {
         this.activite = activite;
     }
-    
+
     public String getIdUtilisateur() {
         return idUtilisateur;
     }
-    
+
     public void setIdUtilisateur(String idUtilisateur) {
         this.idUtilisateur = idUtilisateur;
     }
-    
+
     public Morphotype getMorphotype() {
         return morphotype;
     }
-    
+
     public void setMorphotype(Morphotype morphotype) {
         this.morphotype = morphotype;
     }
-    
+
     public Niveau getNiveau() {
         return niveau;
     }
-    
+
     public void setNiveau(Niveau niveau) {
         this.niveau = niveau;
     }
-    
+
     public Objectif getObjectif() {
         return objectif;
     }
-    
+
     public void setObjectif(Objectif objectif) {
         this.objectif = objectif;
     }
-    
+
     public float getIMC() {
         return (float) (poids / Math.pow(taille, 2));
     }
-    
+
     public float calculMetabolismeBase() {
         float besoin = 0;
         switch (sexe) {
@@ -155,7 +155,7 @@ public class Utilisateur implements Serializable {
         }
         return besoin;
     }
-    
+
     @Override
     public String toString() {
         return "Utilisateur{" + "idUtilisateur='" + idUtilisateur + '\'' + ", username='" + username + '\'' + ", dateInscription='" + dateInscription + '\'' + ", age=" + age + ", taille=" + taille + ", poids=" + poids + ", poidsDesire=" + poidsDesire + ", sexe=" + sexe + ", activite=" + activite + ", morphotype=" + morphotype + ", niveau=" + niveau + ", objectif=" + objectif + '}';

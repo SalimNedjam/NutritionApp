@@ -1,70 +1,70 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Fragments.JournalFragment">
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".Fragments.JournalFragment">
 
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:fontFamily="@font/caviardreams_bold"
-            android:gravity="center"
-            android:text="Régime recommandé"
-            android:textColor="@color/black"
-            android:textSize="24sp" />
-
-        <LinearLayout
-            android:id="@+id/macrosVisibilityLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:visibility="visible">
+            android:orientation="vertical">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/caviardreams_bold"
+                android:gravity="center"
+                android:text="Régime recommandé"
+                android:textColor="@color/black"
+                android:textSize="24sp"/>
+
+        <LinearLayout
+                android:id="@+id/macrosVisibilityLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="visible">
 
             <CheckBox
-                android:id="@+id/Snack1CheckBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/blue"
-                android:checked="true"
-                android:text="Gouter 1" />
+                    android:id="@+id/Snack1CheckBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/blue"
+                    android:checked="true"
+                    android:text="Gouter 1"/>
 
             <CheckBox
-                android:id="@+id/Snack2CheckBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/green"
-                android:checked="true"
-                android:text="Gouter 2" />
+                    android:id="@+id/Snack2CheckBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/green"
+                    android:checked="true"
+                    android:text="Gouter 2"/>
 
             <CheckBox
-                android:id="@+id/Snack3CheckBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/yello"
-                android:checked="true"
-                android:text="Gouter 3" />
+                    android:id="@+id/Snack3CheckBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/yello"
+                    android:checked="true"
+                    android:text="Gouter 3"/>
 
         </LinearLayout>
 
 
         <LinearLayout
-            android:id="@+id/root"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"></LinearLayout>
+                android:id="@+id/root"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"></LinearLayout>
 
 
     </LinearLayout>

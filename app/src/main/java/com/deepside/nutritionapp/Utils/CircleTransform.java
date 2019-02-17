@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 
@@ -13,7 +12,7 @@ public class CircleTransform extends BitmapTransformation {
     public CircleTransform(Context context) {
         super(context);
     }
-    
+
     private static Bitmap circleCrop(BitmapPool pool, Bitmap source) {
         if (source == null) return null;
         int size = Math.min(source.getWidth(), source.getHeight());
@@ -32,12 +31,12 @@ public class CircleTransform extends BitmapTransformation {
         canvas.drawCircle(r, r, r, paint);
         return result;
     }
-    
+
     @Override
     protected Bitmap transform(BitmapPool pool, Bitmap toTransform, int outWidth, int outHeight) {
         return circleCrop(pool, toTransform);
     }
-    
+
     @Override
     public String getId() {
         return getClass().getName();

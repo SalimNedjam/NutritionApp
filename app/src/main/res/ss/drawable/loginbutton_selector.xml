@@ -4,18 +4,18 @@
     <!-- When item pressed this item will be triggered -->
     <item android:state_pressed="true">
         <shape android:shape="rectangle">
-            <corners android:radius="3dp" />
+            <corners android:radius="3dp"/>
 
-            <solid android:color="@color/button_selectorcolor" />
+            <solid android:color="@color/button_selectorcolor"/>
         </shape>
     </item>
 
     <!-- By default the background will be this item -->
     <item>
         <shape android:shape="rectangle">
-            <corners android:radius="3dp" />
+            <corners android:radius="3dp"/>
 
-            <solid android:color="@color/white_greyish" />
+            <solid android:color="@color/white_greyish"/>
 
         </shape>
     </item>
